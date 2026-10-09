@@ -1,1 +1,88 @@
-{ "announcements": [], "notes": [], "links": [], "changes": [] }
+{
+  "announcements": [],
+  "notes": [
+    {
+      "id": "mv1aaq7vqs2",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "slides",
+      "title": "IC Engine final",
+      "url": "files/mv1aaq7t_IC_Engine_final.pdf"
+    },
+    {
+      "id": "mv1abaqityx",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "slides",
+      "title": "Refrigeration.",
+      "url": "files/mv1abaqg_Refrigeration..pdf"
+    },
+    {
+      "id": "mv1abftm7w5",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "slides",
+      "title": "Thermal power plant",
+      "url": "files/mv1abftk_Thermal_power_plant.pdf"
+    },
+    {
+      "id": "mv1ac4amec4",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "slides",
+      "title": "01 01 Stone v1",
+      "url": "files/mv1ac4ak_01-01_Stone_v1.pdf"
+    },
+    {
+      "id": "mv1acab4t4t",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "slides",
+      "title": "01 02 Brick v1",
+      "url": "files/mv1acab2_01-02_Brick_v1.pdf"
+    },
+    {
+      "id": "mv1acgb7h6f",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "slides",
+      "title": "01 03 Cement v2",
+      "url": "files/mv1acgb6_01-03_Cement_v2.pdf"
+    },
+    {
+      "id": "mv1ackwn7fg",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "slides",
+      "title": "01 04 Concrete v1",
+      "url": "files/mv1ackwm_01-04_Concrete_v1.pdf"
+    },
+    {
+      "id": "mv1acozwc8a",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "slides",
+      "title": "BRANCHES OF CIVIL ENGINEERING",
+      "url": "files/mv1acozw_BRANCHES_OF_CIVIL_ENGINEERING.pdf"
+    },
+    {
+      "id": "mv1adbyr8yx",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "slides",
+      "title": "Dr Aswani CSIR11 Slides Unit 1 & 2 261009 132806",
+      "url": "files/mv1adbyq_Dr_Aswani_CSIR11_Slides_Unit_1___2_261009_132806.pdf"
+    }
+  ],
+  "links": [],
+  "changes": []
+}
