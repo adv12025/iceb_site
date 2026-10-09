@@ -2,15 +2,6 @@
   "announcements": [],
   "notes": [
     {
-      "id": "mv1aaq7vqs2",
-      "semester": "Semester 1",
-      "subject": "Basics of Mechanical Engineering",
-      "code": "MEIR11",
-      "type": "slides",
-      "title": "IC Engine final",
-      "url": "files/mv1aaq7t_IC_Engine_final.pdf"
-    },
-    {
       "id": "mv1abaqityx",
       "semester": "Semester 1",
       "subject": "Basics of Mechanical Engineering",
