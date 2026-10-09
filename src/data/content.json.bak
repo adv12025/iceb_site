@@ -63,6 +63,15 @@
       "type": "slides",
       "title": "Refrigeration.",
       "url": "files/mv1e2ut4_Refrigeration..pdf"
+    },
+    {
+      "id": "mv1e30tx7rx",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "slides",
+      "title": "Thermal power plant",
+      "url": "files/mv1e30tv_Thermal_power_plant.pdf"
     }
   ],
   "links": [],
