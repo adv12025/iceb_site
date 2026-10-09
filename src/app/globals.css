@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  --bg: #eaf4fb; --card: rgba(255,255,255,.66); --solid: #fff; --ink: #07263d; --mute: #4f6f86;
+  --line: rgba(14,116,170,.16); --accent: #0284c7; --accent2: #22d3ee; --soft: rgba(14,165,233,.1);
+  --clubs: #7c3aed; --events: #059669; --scholarships: #d97706; --academic: #0284c7;
+  --shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(7,60,100,.06), 0 10px 28px -10px rgba(14,116,170,.22);
+}
+[data-theme=dark] {
+  --bg: #050e1a; --card: rgba(14,34,56,.58); --solid: #0c2036; --ink: #eaf8ff; --mute: #8fb3c9;
+  --line: rgba(160,225,255,.14); --accent: #7dd3fc; --accent2: #a5f3fc; --soft: rgba(125,211,252,.12);
+  --clubs: #8b5cf6; --events: #10b981; --scholarships: #f59e0b; --academic: #0ea5e9;
+  --shadow: inset 0 1px 0 rgba(200,240,255,.18), 0 1px 2px rgba(0,0,0,.35), 0 12px 32px -10px rgba(0,0,0,.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg); --color-card: var(--card); --color-solid: var(--solid); --color-ink: var(--ink);
+  --color-mute: var(--mute); --color-line: var(--line); --color-accent: var(--accent); --color-accent2: var(--accent2);
+  --color-soft: var(--soft); --shadow-card: var(--shadow);
+  --animate-drift: drift 22s ease-in-out infinite alternate;
+}
+@keyframes drift { to { transform: translate(6vmax, 5vmax) scale(1.12); } }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; color-scheme: light; }
+html[data-theme=dark] { color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font-family: "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif; -webkit-font-smoothing: antialiased; transition: background .3s, color .3s; }
+::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
