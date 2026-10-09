@@ -2,15 +2,6 @@
   "announcements": [],
   "notes": [
     {
-      "id": "mv1ac4amec4",
-      "semester": "Semester 1",
-      "subject": "Basics of Civil Engineering",
-      "code": "CEIR11",
-      "type": "slides",
-      "title": "01 01 Stone v1",
-      "url": "files/mv1ac4ak_01-01_Stone_v1.pdf"
-    },
-    {
       "id": "mv1acab4t4t",
       "semester": "Semester 1",
       "subject": "Basics of Civil Engineering",
