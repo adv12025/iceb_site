@@ -2,15 +2,6 @@
   "announcements": [],
   "notes": [
     {
-      "id": "mv1abftm7w5",
-      "semester": "Semester 1",
-      "subject": "Basics of Mechanical Engineering",
-      "code": "MEIR11",
-      "type": "slides",
-      "title": "Thermal power plant",
-      "url": "files/mv1abftk_Thermal_power_plant.pdf"
-    },
-    {
       "id": "mv1ac4amec4",
       "semester": "Semester 1",
       "subject": "Basics of Civil Engineering",
