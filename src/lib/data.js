@@ -14,7 +14,7 @@ export const SITE = {
   title: "ICE B Hub",
   subtitle: "Dept. of Instrumentation & Control Engineering · NIT Trichy",
   batch: "ICE · Section B",
-  contact: "CR: Aditya",          // shown in footer
+  contact: "",                    // optional text shown in footer; leave "" for none
   whatsapp: ""                    // optional: class group invite link
 };
 
