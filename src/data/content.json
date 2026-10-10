@@ -93,5 +93,13 @@
     }
   ],
   "links": [],
-  "changes": []
+  "changes": [
+    {
+      "id": "mv2eeswfegc",
+      "date": "2026-10-12",
+      "course": "*",
+      "action": "cancelled",
+      "note": "Cycle test"
+    }
+  ]
 }
