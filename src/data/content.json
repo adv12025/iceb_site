@@ -1,5 +1,17 @@
 {
-  "announcements": [],
+  "announcements": [
+    {
+      "id": "mv2wkmjo3yr",
+      "date": "2026-10-11",
+      "tag": "clubs",
+      "pinned": false,
+      "title": "SCIEnT - INVENTIVE",
+      "body": "🚀 INVENTIVE by SCIEnT is back again!! \n\nGot an idea that could change the way things work? 💡\nThis is your chance to turn that idea into reality!\n\nINVENTIVE is SCIEnT’s flagship initiative that empowers students to identify real-world problems, develop innovative solutions, and build working prototypes.\n\n*What do you get?*\n• 🤝 Expert mentorship from alumni and faculty\n• 🛠️ Dedicated workspace in SCIEnT for project development\n• ⚙️ Component support to build and test your prototypes\n• 🚀 Opportunity to showcase your innovation at the Open House during Pragyan\n• 📜 Patent support for promising and impactful projects\n\n*How does it work?*\n💡 Identify and tackle real-world problems\n👥 Brainstorm and develop ideas with your team\n🔧 Build and test your prototype\n🌟 Showcase your innovation and take it further!\n\n*No prior experience needed — just curiosity and the drive to innovate!*\n⏰ *Last date:* 14th October, 2026",
+      "link": "https://docs.google.com/forms/d/e/1FAIpQLSekGjr-",
+      "linkLabel": "Register",
+      "contacts": "Janani: 7550087785\nSamarth: 80553 19593"
+    }
+  ],
   "notes": [
     {
       "id": "mv1e0i5xf8y",
