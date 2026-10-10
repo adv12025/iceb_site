@@ -18,28 +18,28 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 ## Page layout (`src/components/`)
 | What you see | File |
 |---|---|
-| Whole page, wires everything together | `Hub.js` |
-| Top bar (logo, menu, dark mode button) | `Header.js` |
-| Menu links + section icons | `nav.js` |
-| Big title + search box | `Hero.js` |
-| Footer | `Footer.js` |
-| Background glow | `Background.js` |
-| Announcement cards | `Announcements.js` |
-| Notes section | `Notes.js` |
-| Quick Links section | `Links.js` |
-| Shared bits (section heading, filter chips, helpers) | `ui.js` |
+| Whole page, wires everything together | `Hub.jsx` |
+| Top bar (logo, menu, dark mode button) | `Header.jsx` |
+| Menu links + section icons | `nav.jsx` |
+| Big title + search box | `Hero.jsx` |
+| Footer | `Footer.jsx` |
+| Background glow | `Background.jsx` |
+| Announcement cards | `Announcements.jsx` |
+| Notes section | `Notes.jsx` |
+| Quick Links section | `Links.jsx` |
+| Shared bits (section heading, filter chips, helpers) | `ui.jsx` |
 
 ### Schedule section
 | What you see | File |
 |---|---|
-| Decides what is on now / next, assembles the 3 parts | `Schedule.js` |
-| Cards: Happening now, Next class, Extra classes | `schedule/NowCards.js` |
-| "Today" list | `schedule/TodayBox.js` |
-| Weekly grid | `schedule/TimetableGrid.js` |
-| Small card/label pieces | `schedule/parts.js` |
+| Decides what is on now / next, assembles the 3 parts | `Schedule.jsx` |
+| Cards: Happening now, Next class, Extra classes | `schedule/NowCards.jsx` |
+| "Today" list | `schedule/TodayBox.jsx` |
+| Weekly grid | `schedule/TimetableGrid.jsx` |
+| Small card/label pieces | `schedule/parts.jsx` |
 | The logic (today's classes, next class, extras, IST time) | `lib/schedule.js` |
 
 ## Other
 - `lib/content.js`: merges built-in data + admin content (+ optional Google Sheet).
-- `app/globals.css`: colours and theme. `app/layout.js`: page title / fonts.
+- `app/globals.css`: colours and theme. `app/layout.jsx`: page title / fonts.
 - Colours and spacing are Tailwind classes written directly in each component.
