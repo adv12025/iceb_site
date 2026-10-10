@@ -37,7 +37,6 @@ export default function Schedule({ changes }) {
         ...extrasFor(changes, now.date).map(e => ({ start: e.start, end: e.end, course: e.course, chg: { note: e.note || "extra class" }, extra: true })),
       ].sort((a, b) => toMin(a.start) - toMin(b.start))
     : [];
-  const upcoming = now ? changes.filter(c => c.date >= now.date).sort((a, b) => a.date.localeCompare(b.date) || (a.start || "").localeCompare(b.start || "")) : [];
   const active = today.filter(c => !c.cx);
   const cur = now && active.find(c => now.min >= toMin(c.start) && now.min < toMin(c.end));
   const nxt = now && active.find(c => toMin(c.start) > now.min);
@@ -99,19 +98,6 @@ export default function Schedule({ changes }) {
           </tbody>
         </table>
       </div>
-      {upcoming.length > 0 && (
-        <div className="mt-4 rounded-2xl border border-line bg-card p-4 shadow-card backdrop-blur">
-          <Label>Schedule changes</Label>
-          <ul className="mt-1 text-sm">
-            {upcoming.map((c, i) => (
-              <li key={i} className="flex flex-wrap justify-between gap-x-3 border-t border-line py-1.5 first:border-t-0">
-                <span><b>{c.date}</b> · {c.action === "extra" ? "➕ Extra class" : c.action === "cancelled" ? "❌ Cancelled" : "ℹ️"} · {c.course === "*" ? "Whole day" : c.course}</span>
-                <span className="text-mute">{c.action === "extra" ? `${hhmm(c.start)}–${hhmm(c.end)}` : ""}{c.note ? ` ${c.note}` : ""}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
       <p className="mt-2 text-sm text-mute">{TIMETABLE_META.section} · {TIMETABLE_META.session}. Highlighted = happening now (IST).</p>
     </>
   );
