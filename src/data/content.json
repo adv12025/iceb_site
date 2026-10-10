@@ -90,6 +90,159 @@
       "type": "lab",
       "title": "PHYSICS LAB MANUAL",
       "url": "files/mv2e16j5_PHYSICS_LAB_MANUAL.pdf"
+    },
+    {
+      "id": "pyqx4ut48uq",
+      "semester": "Semester 1",
+      "subject": "Linear Algebra and Calculus",
+      "code": "MAIR12",
+      "type": "pyq",
+      "title": "Quiz (undated)",
+      "url": "files/x4ut48uq_PYQ_Linear_Algebra_and_Calculus_Quiz__undated_.pdf"
+    },
+    {
+      "id": "pyqnn9s046m",
+      "semester": "Semester 1",
+      "subject": "Linear Algebra and Calculus",
+      "code": "MAIR12",
+      "type": "pyq",
+      "title": "Assessment II - 28 Nov 2025",
+      "url": "files/nn9s046m_PYQ_Linear_Algebra_and_Calculus_Assessment_II_-_28_Nov_2025.pdf"
+    },
+    {
+      "id": "pyq56eh22k4",
+      "semester": "Semester 1",
+      "subject": "Linear Algebra and Calculus",
+      "code": "MAIR12",
+      "type": "pyq",
+      "title": "End Sem - 29 Dec 2025",
+      "url": "files/56eh22k4_PYQ_Linear_Algebra_and_Calculus_End_Sem_-_29_Dec_2025.pdf"
+    },
+    {
+      "id": "pyqr63ued9m",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "Cycle Test 1 - 14 Oct 2025",
+      "url": "files/r63ued9m_PYQ_Basics_of_Mechanical_Engineering_Cycle_Test_1_-_14_Oct_2025.pdf"
+    },
+    {
+      "id": "pyq7fos6hzu",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "Cycle Test 2 - 26 Nov 2025",
+      "url": "files/7fos6hzu_PYQ_Basics_of_Mechanical_Engineering_Cycle_Test_2_-_26_Nov_2025.pdf"
+    },
+    {
+      "id": "pyqclq27gx6",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "Class Quiz 1 - 14 Nov 2025",
+      "url": "files/clq27gx6_PYQ_Basics_of_Mechanical_Engineering_Class_Quiz_1_-_14_Nov_2025.pdf"
+    },
+    {
+      "id": "pyq1lu8710m",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "Class Quiz 2 - 26 Nov 2025",
+      "url": "files/1lu8710m_PYQ_Basics_of_Mechanical_Engineering_Class_Quiz_2_-_26_Nov_2025.pdf"
+    },
+    {
+      "id": "pyqu4buxiu7",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "End Sem - 30 Dec 2025",
+      "url": "files/u4buxiu7_PYQ_Basics_of_Mechanical_Engineering_End_Sem_-_30_Dec_2025.pdf"
+    },
+    {
+      "id": "pyq91emg0o8",
+      "semester": "Semester 1",
+      "subject": "Energy and Environmental Engineering",
+      "code": "ENIR11",
+      "type": "pyq",
+      "title": "End Sem - 26 Dec 2025",
+      "url": "files/91emg0o8_PYQ_Energy_and_Environmental_Engineering_End_Sem_-_26_Dec_2025.pdf"
+    },
+    {
+      "id": "pyqqw02hp6m",
+      "semester": "Semester 1",
+      "subject": "Physics",
+      "code": "PHIR11",
+      "type": "pyq",
+      "title": "CT-I - 15 Oct 2025",
+      "url": "files/qw02hp6m_PYQ_Physics_CT-I_-_15_Oct_2025.pdf"
+    },
+    {
+      "id": "pyqhszvdz6z",
+      "semester": "Semester 1",
+      "subject": "Physics",
+      "code": "PHIR11",
+      "type": "pyq",
+      "title": "CT-II - 26 Nov 2025",
+      "url": "files/hszvdz6z_PYQ_Physics_CT-II_-_26_Nov_2025.pdf"
+    },
+    {
+      "id": "pyqgquh89yo",
+      "semester": "Semester 1",
+      "subject": "Physics",
+      "code": "PHIR11",
+      "type": "pyq",
+      "title": "Final - 22 Dec 2025",
+      "url": "files/gquh89yo_PYQ_Physics_Final_-_22_Dec_2025.pdf"
+    },
+    {
+      "id": "pyq7f8jhopq",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "pyq",
+      "title": "Cycle Test 1 - 14 Oct 2025",
+      "url": "files/7f8jhopq_PYQ_Introduction_to_Computer_Programming_Cycle_Test_1_-_14_Oct_2025.pdf"
+    },
+    {
+      "id": "pyqg6j6vmul",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "pyq",
+      "title": "Cycle Test 2 - 27 Nov 2025",
+      "url": "files/g6j6vmul_PYQ_Introduction_to_Computer_Programming_Cycle_Test_2_-_27_Nov_2025.pdf"
+    },
+    {
+      "id": "pyq3i1sjfbp",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "pyq",
+      "title": "Final - 24 Dec 2025",
+      "url": "files/3i1sjfbp_PYQ_Introduction_to_Computer_Programming_Final_-_24_Dec_2025.pdf"
+    },
+    {
+      "id": "pyqjke65yym",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "pyq",
+      "title": "Cycle Test 1 - 29 Oct 2025",
+      "url": "files/jke65yym_PYQ_Basics_of_Civil_Engineering_Cycle_Test_1_-_29_Oct_2025.pdf"
+    },
+    {
+      "id": "pyqi1eei1of",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "pyq",
+      "title": "Cycle Test 2 - 27 Nov 2025",
+      "url": "files/i1eei1of_PYQ_Basics_of_Civil_Engineering_Cycle_Test_2_-_27_Nov_2025.pdf"
     }
   ],
   "links": [],
