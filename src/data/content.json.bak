@@ -81,6 +81,15 @@
       "type": "slides",
       "title": "CS UNIT1-UNIT2",
       "url": "files/mv1e3i15_Dr_Aswani_CSIR11_Slides_Unit_1___2_261009_132806.pdf"
+    },
+    {
+      "id": "mv2e16j8cbr",
+      "semester": "Semester 1",
+      "subject": "Physics Laboratory",
+      "code": "PHIR12",
+      "type": "lab",
+      "title": "PHYSICS LAB MANUAL",
+      "url": "files/mv2e16j5_PHYSICS_LAB_MANUAL.pdf"
     }
   ],
   "links": [],
