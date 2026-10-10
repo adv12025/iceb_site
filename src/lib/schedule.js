@@ -14,7 +14,10 @@ export function istNow() {
   return { day: p.weekday, date: `${p.year}-${p.month}-${p.day}`, min: (+p.hour % 24) * 60 + +p.minute };
 }
 
-export const changeFor = (changes, date, course) => changes.find(c => c.date === date && (c.course === "*" || c.course === course));
+const same = (a, b) => a.trim().toLowerCase() === b.trim().toLowerCase();
+export const changeFor = (changes, date, course) =>
+  changes.find(c => c.action !== "extra" && c.date === date && (c.course === "*" || same(c.course, course)));
+export const extrasFor = (changes, date) => changes.filter(c => c.action === "extra" && c.date === date && c.start && c.end);
 
 /* Turn one day's classes into grid cells, merging multi-period classes with colSpan. */
 export function dayCells(list) {

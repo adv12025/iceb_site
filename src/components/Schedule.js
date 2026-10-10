@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { PERIODS, TIMETABLE, TIMETABLE_META, FACULTY } from "@/lib/data";
-import { DAYS, istNow, toMin, hhmm, dur, changeFor, dayCells } from "@/lib/schedule";
+import { DAYS, istNow, toMin, hhmm, dur, changeFor, extrasFor, dayCells } from "@/lib/schedule";
 import { cx } from "./ui";
 
 const Card = ({ live, children }) => (
@@ -31,7 +31,13 @@ export default function Schedule({ changes }) {
     return () => clearInterval(t);
   }, []);
 
-  const today = now ? (TIMETABLE[now.day] || []).map(c => { const chg = changeFor(changes, now.date, c.course); return { ...c, chg, cx: chg?.action === "cancelled" }; }) : [];
+  const today = now
+    ? [
+        ...(TIMETABLE[now.day] || []).map(c => { const chg = changeFor(changes, now.date, c.course); return { ...c, chg, cx: chg?.action === "cancelled" }; }),
+        ...extrasFor(changes, now.date).map(e => ({ start: e.start, end: e.end, course: e.course, chg: { note: e.note || "extra class" }, extra: true })),
+      ].sort((a, b) => toMin(a.start) - toMin(b.start))
+    : [];
+  const upcoming = now ? changes.filter(c => c.date >= now.date).sort((a, b) => a.date.localeCompare(b.date) || (a.start || "").localeCompare(b.start || "")) : [];
   const active = today.filter(c => !c.cx);
   const cur = now && active.find(c => now.min >= toMin(c.start) && now.min < toMin(c.end));
   const nxt = now && active.find(c => toMin(c.start) > now.min);
@@ -64,7 +70,7 @@ export default function Schedule({ changes }) {
               <ul className="mt-1 text-sm">
                 {today.map((c, i) => (
                   <li key={i} className={cx("flex justify-between gap-3", c.cx && "line-through opacity-60", !c.cx && toMin(c.end) <= now.min && "opacity-50")}>
-                    <span>{c.course}{c.chg && ` — ${c.chg.note || c.chg.action}`}</span><span>{hhmm(c.start)}</span>
+                    <span>{c.extra && "➕ "}{c.course}{c.chg && ` — ${c.chg.note || c.chg.action}`}</span><span>{hhmm(c.start)}</span>
                   </li>
                 ))}
               </ul>
@@ -93,6 +99,19 @@ export default function Schedule({ changes }) {
           </tbody>
         </table>
       </div>
+      {upcoming.length > 0 && (
+        <div className="mt-4 rounded-2xl border border-line bg-card p-4 shadow-card backdrop-blur">
+          <Label>Schedule changes</Label>
+          <ul className="mt-1 text-sm">
+            {upcoming.map((c, i) => (
+              <li key={i} className="flex flex-wrap justify-between gap-x-3 border-t border-line py-1.5 first:border-t-0">
+                <span><b>{c.date}</b> · {c.action === "extra" ? "➕ Extra class" : c.action === "cancelled" ? "❌ Cancelled" : "ℹ️"} · {c.course === "*" ? "Whole day" : c.course}</span>
+                <span className="text-mute">{c.action === "extra" ? `${hhmm(c.start)}–${hhmm(c.end)}` : ""}{c.note ? ` ${c.note}` : ""}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <p className="mt-2 text-sm text-mute">{TIMETABLE_META.section} · {TIMETABLE_META.session}. Highlighted = happening now (IST).</p>
     </>
   );
