@@ -108,5 +108,102 @@
       "action": "cancelled",
       "note": "Cycle test"
     }
-  ]
+  ],
+  "timetable": {
+    "Monday": [
+      {
+        "start": "09:20",
+        "end": "10:10",
+        "course": "Linear Algebra & Calculus"
+      },
+      {
+        "start": "10:30",
+        "end": "11:20",
+        "course": "Intro to Computer Programming"
+      },
+      {
+        "start": "11:20",
+        "end": "12:10",
+        "course": "Physics"
+      },
+      {
+        "start": "13:30",
+        "end": "17:10",
+        "course": "Physics Lab"
+      }
+    ],
+    "Tuesday": [
+      {
+        "start": "10:30",
+        "end": "12:10",
+        "course": "Engineering Practice"
+      }
+    ],
+    "Wednesday": [
+      {
+        "start": "09:20",
+        "end": "10:10",
+        "course": "Physics"
+      },
+      {
+        "start": "10:30",
+        "end": "11:20",
+        "course": "Basics of Civil Engg."
+      },
+      {
+        "start": "11:20",
+        "end": "12:10",
+        "course": "Linear Algebra & Calculus"
+      }
+    ],
+    "Thursday": [
+      {
+        "start": "08:30",
+        "end": "09:20",
+        "course": "Energy & Environmental Engg."
+      },
+      {
+        "start": "09:20",
+        "end": "10:10",
+        "course": "Basics of Mechanical Engg."
+      },
+      {
+        "start": "10:30",
+        "end": "11:20",
+        "course": "Linear Algebra & Calculus"
+      },
+      {
+        "start": "11:20",
+        "end": "12:10",
+        "course": "Basics of Civil Engg."
+      }
+    ],
+    "Friday": [
+      {
+        "start": "08:30",
+        "end": "09:20",
+        "course": "Intro to Computer Programming"
+      },
+      {
+        "start": "09:20",
+        "end": "10:10",
+        "course": "Energy & Environmental Engg."
+      },
+      {
+        "start": "10:30",
+        "end": "11:20",
+        "course": "Physics"
+      },
+      {
+        "start": "11:20",
+        "end": "12:10",
+        "course": "Basics of Mechanical Engg."
+      },
+      {
+        "start": "13:30",
+        "end": "17:30",
+        "course": "Computer Programming Lab"
+      }
+    ]
+  }
 }
