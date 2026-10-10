@@ -18,6 +18,7 @@ export function buildData(base, content, sheet) {
     announcements: [...(content.announcements || []), ...src.announcements],
     links: [...src.links, ...(content.links || [])],
     changes: [...src.changes, ...(content.changes || [])],
+    timetable: content.timetable || base.timetable,
     notes,
   };
 }

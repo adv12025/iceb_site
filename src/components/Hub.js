@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { SITE, ANNOUNCEMENTS, NOTES, LINKS, SCHEDULE_CHANGES } from "@/lib/data";
+import { SITE, ANNOUNCEMENTS, NOTES, LINKS, SCHEDULE_CHANGES, TIMETABLE } from "@/lib/data";
 import { buildData, loadSheet } from "@/lib/content";
 import { Section } from "./ui";
 import Schedule from "./Schedule";
@@ -8,7 +8,7 @@ import Announcements from "./Announcements";
 import Notes from "./Notes";
 import Links from "./Links";
 
-const BASE = { announcements: ANNOUNCEMENTS, notes: NOTES, links: LINKS, changes: SCHEDULE_CHANGES };
+const BASE = { announcements: ANNOUNCEMENTS, notes: NOTES, links: LINKS, changes: SCHEDULE_CHANGES, timetable: TIMETABLE };
 const NAV = [["schedule", "Schedule"], ["announcements", "Announcements"], ["notes", "Notes"], ["links", "Links"]];
 const ic = {
   schedule: <><rect x="3" y="4" width="18" height="17" rx="3" /><path d="M8 2v4M16 2v4M3 10h18" /></>,
@@ -81,7 +81,7 @@ export default function Hub({ content }) {
           </label>
         </section>
 
-        <Section id="schedule" title="Class Schedule" icon={ic.schedule}><Schedule changes={data.changes} /></Section>
+        <Section id="schedule" title="Class Schedule" icon={ic.schedule}><Schedule changes={data.changes} timetable={data.timetable} /></Section>
         <Section id="announcements" title="Announcements" icon={ic.announcements}><Announcements items={data.announcements} q={query} /></Section>
         <Section id="notes" title="Notes" icon={ic.notes}><Notes notes={data.notes} q={query} /></Section>
         <Section id="links" title="Quick Links" icon={ic.links}><Links links={data.links} q={query} /></Section>
