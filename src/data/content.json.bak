@@ -95,13 +95,6 @@
   "links": [],
   "changes": [
     {
-      "id": "mv2ceq0swqk",
-      "date": "2026-10-12",
-      "course": "*",
-      "action": "cancelled",
-      "note": "Cycle test"
-    },
-    {
       "id": "mv2e2t44ynv",
       "date": "2026-10-10",
       "course": "*",
