@@ -37,11 +37,58 @@ export default function Schedule({ changes, timetable: TIMETABLE }) {
         ...extrasFor(changes, now.date).map(e => ({ start: e.start, end: e.end, course: e.course, chg: { note: e.note || "extra class" }, extra: true })),
       ].sort((a, b) => toMin(a.start) - toMin(b.start))
     : [];
+  const active = today.filter(c => !c.cx);
+  const cur = now && active.find(c => now.min >= toMin(c.start) && now.min < toMin(c.end));
+  const nxt = now && active.find(c => toMin(c.start) > now.min);
+
+  /* Next class on a later day (looks up to 2 weeks ahead; respects cancellations and extra classes). */
+  let later = null;
+  if (now && !nxt) {
+    for (let d = 1; d <= 14 && !later; d++) {
+      const dt = new Date(now.date + "T00:00:00Z");
+      dt.setUTCDate(dt.getUTCDate() + d);
+      const date = dt.toISOString().slice(0, 10), name = DAYS[dt.getUTCDay()];
+      const list = [
+        ...(TIMETABLE[name] || []).filter(c => !changeFor(changes, date, c.course)).map(c => ({ ...c })),
+        ...extrasFor(changes, date).map(e => ({ start: e.start, end: e.end, course: e.course, extra: true })),
+      ].sort((a, b) => toMin(a.start) - toMin(b.start));
+      if (list.length) later = { ...list[0], date, name, tomorrow: d === 1 };
+    }
+  }
+  const extras = now ? changes.filter(c => c.action === "extra" && c.date >= now.date && c.start && c.end).sort((a, b) => a.date.localeCompare(b.date) || a.start.localeCompare(b.start)) : [];
   const holiday = now && changeFor(changes, now.date, "*");
   const notes = now ? changes.filter(c => c.date === now.date && c.action === "note") : [];
 
   return (
     <>
+      {now && (
+        <div className="mb-4 grid gap-3 md:grid-cols-3">
+          {cur && <Card live><Label>Happening now{cur.extra && " · extra class"}</Label><b className="text-lg">{cur.course}</b><span className="block text-sm text-mute">{FACULTY[cur.course]} · ends {hhmm(cur.end)} ({dur(toMin(cur.end) - now.min)} left)</span></Card>}
+          {nxt && <Card><Label>Next class{nxt.extra && " · extra class"}</Label><b className="text-lg">{nxt.course}</b><span className="block text-sm text-mute">{FACULTY[nxt.course]} · {hhmm(nxt.start)}–{hhmm(nxt.end)} (in {dur(toMin(nxt.start) - now.min)})</span></Card>}
+          {!nxt && (
+            <Card>
+              <Label>{cur ? "After this" : "Next class"}</Label>
+              {later
+                ? <><b className="text-lg">{later.course}{later.extra && " ➕"}</b><span className="block text-sm text-mute">{later.tomorrow ? "Tomorrow" : later.name + " " + later.date.slice(5)} · {hhmm(later.start)}–{hhmm(later.end)}</span></>
+                : <b className="text-lg">No upcoming classes</b>}
+            </Card>
+          )}
+          {extras.length > 0 && (
+            <Card>
+              <Label>➕ Extra classes</Label>
+              <ul className="mt-1 text-sm">
+                {extras.map((e, i) => (
+                  <li key={i} className="flex flex-wrap justify-between gap-x-3">
+                    <span>{e.course}{e.note && ` — ${e.note}`}</span>
+                    <span className="text-mute">{e.date === now.date ? "Today" : e.date.slice(5)} · {hhmm(e.start)}–{hhmm(e.end)}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+        </div>
+      )}
+
       {now && (today.length > 0 || holiday || notes.length > 0) && (
         <div className="mb-4 rounded-2xl border border-line bg-card p-4 shadow-card backdrop-blur">
           <Label>Today · {now.day}{holiday && ` · ${holiday.action === "cancelled" ? "No classes" : ""} ${holiday.note || ""}`}</Label>
