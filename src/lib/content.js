@@ -1,4 +1,4 @@
-import { SHEET_ID } from "./data";
+import { SHEET_ID } from "@/data/site";
 
 /* Merge base data + admin-tool content (+ optional Google Sheet) into what the page shows.
    Pure: never mutates its inputs, so re-running it can't duplicate items. */

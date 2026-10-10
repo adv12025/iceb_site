@@ -1,4 +1,4 @@
-import { PERIODS } from "./data";
+import { PERIODS } from "@/data/timetable";
 
 export const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
@@ -34,3 +34,32 @@ export function dayCells(list) {
   }
   return cells;
 }
+
+/* ---------- what the schedule section shows, computed from the timetable + one-off changes ---------- */
+
+/* Today's classes (weekly timetable + extra classes), cancelled ones flagged `cx`, sorted by time. */
+export function todayClasses(timetable, changes, now) {
+  return [
+    ...(timetable[now.day] || []).map(c => { const chg = changeFor(changes, now.date, c.course); return { ...c, chg, cx: chg?.action === "cancelled" }; }),
+    ...extrasFor(changes, now.date).map(e => ({ start: e.start, end: e.end, course: e.course, chg: { note: e.note || "extra class" }, extra: true })),
+  ].sort((a, b) => toMin(a.start) - toMin(b.start));
+}
+
+/* Next class on a later day (looks up to 2 weeks ahead; respects cancellations and extra classes). */
+export function nextLaterClass(timetable, changes, now) {
+  for (let d = 1; d <= 14; d++) {
+    const dt = new Date(now.date + "T00:00:00Z");
+    dt.setUTCDate(dt.getUTCDate() + d);
+    const date = dt.toISOString().slice(0, 10), name = DAYS[dt.getUTCDay()];
+    const list = [
+      ...(timetable[name] || []).filter(c => !changeFor(changes, date, c.course)).map(c => ({ ...c })),
+      ...extrasFor(changes, date).map(e => ({ start: e.start, end: e.end, course: e.course, extra: true })),
+    ].sort((a, b) => toMin(a.start) - toMin(b.start));
+    if (list.length) return { ...list[0], date, name, tomorrow: d === 1 };
+  }
+  return null;
+}
+
+/* Extra classes from today onward. */
+export const upcomingExtras = (changes, now) =>
+  changes.filter(c => c.action === "extra" && c.date >= now.date && c.start && c.end).sort((a, b) => a.date.localeCompare(b.date) || a.start.localeCompare(b.start));
