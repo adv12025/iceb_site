@@ -107,6 +107,13 @@
       "course": "*",
       "action": "cancelled",
       "note": "Cycle test"
+    },
+    {
+      "id": "mv2eh8jzou1",
+      "date": "2026-10-14",
+      "course": "*",
+      "action": "cancelled",
+      "note": ""
     }
   ]
 }
