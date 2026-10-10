@@ -35,6 +35,19 @@ export default function Schedule({ changes }) {
 
   return (
     <>
+      {upcoming.length > 0 && (
+        <div className="mb-4 rounded-2xl border border-line bg-card p-4 shadow-card backdrop-blur">
+          <Label>Schedule changes · today</Label>
+          <ul className="mt-1 text-sm">
+            {upcoming.map((c, i) => (
+              <li key={i} className="flex flex-wrap justify-between gap-x-3 border-t border-line py-1.5 first:border-t-0">
+                <span><b>{c.date}</b> · {c.action === "extra" ? "➕ Extra class" : c.action === "cancelled" ? "❌ Cancelled" : "ℹ️"} · {c.course === "*" ? "Whole day" : c.course}</span>
+                <span className="text-mute">{c.action === "extra" ? `${hhmm(c.start)}–${hhmm(c.end)}` : ""}{c.note ? ` ${c.note}` : ""}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="overflow-x-auto rounded-2xl border border-line bg-card shadow-card backdrop-blur">
         <table className="w-full min-w-[820px] border-collapse text-center text-sm">
           <thead>
@@ -55,19 +68,6 @@ export default function Schedule({ changes }) {
           </tbody>
         </table>
       </div>
-      {upcoming.length > 0 && (
-        <div className="mt-4 rounded-2xl border border-line bg-card p-4 shadow-card backdrop-blur">
-          <Label>Schedule changes · today</Label>
-          <ul className="mt-1 text-sm">
-            {upcoming.map((c, i) => (
-              <li key={i} className="flex flex-wrap justify-between gap-x-3 border-t border-line py-1.5 first:border-t-0">
-                <span><b>{c.date}</b> · {c.action === "extra" ? "➕ Extra class" : c.action === "cancelled" ? "❌ Cancelled" : "ℹ️"} · {c.course === "*" ? "Whole day" : c.course}</span>
-                <span className="text-mute">{c.action === "extra" ? `${hhmm(c.start)}–${hhmm(c.end)}` : ""}{c.note ? ` ${c.note}` : ""}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
       <p className="mt-2 text-sm text-mute">{TIMETABLE_META.section} · {TIMETABLE_META.session}. Highlighted = happening now (IST).</p>
     </>
   );
