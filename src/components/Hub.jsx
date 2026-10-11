@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import Schedule from "./Schedule";
 import Announcements from "./Announcements";
 import Notes from "./Notes";
+import Attendance from "./Attendance";
 import Links from "./Links";
 
 const BASE = { announcements: ANNOUNCEMENTS, notes: NOTES, links: LINKS, changes: SCHEDULE_CHANGES, timetable: TIMETABLE };
@@ -48,6 +49,7 @@ export default function Hub({ content }) {
 
         <Section id="schedule" title="Class Schedule" icon={ic.schedule}><Schedule changes={data.changes} timetable={data.timetable} /></Section>
         <Section id="announcements" title="Announcements" icon={ic.announcements}><Announcements items={data.announcements} q={query} /></Section>
+        <Section id="attendance" title="Attendance Tracker" icon={ic.attendance}><Attendance timetable={data.timetable} changes={data.changes} /></Section>
         <Section id="notes" title="Notes" icon={ic.notes}><Notes notes={data.notes} q={query} /></Section>
         <Section id="links" title="Quick Links" icon={ic.links}><Links links={data.links} q={query} /></Section>
       </main>

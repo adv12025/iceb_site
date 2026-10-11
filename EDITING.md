@@ -13,6 +13,7 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 | Subjects and notes slots per semester | `src/data/notes.js` |
 | Quick links (portals etc.) | `src/data/links.js` |
 | Default weekly timetable, period times, faculty names | `src/data/timetable.js` |
+| Academic calendar (holidays, assessments, last class day, attendance limit) | `src/data/academic-calendar.js` |
 | Things added from the admin (do not edit by hand) | `src/data/content.json` |
 
 ## Page layout (`src/components/`)
@@ -38,6 +39,20 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 | Weekly grid | `schedule/TimetableGrid.jsx` |
 | Small card/label pieces | `schedule/parts.jsx` |
 | The logic (today's classes, next class, extras, IST time) | `lib/schedule.js` |
+
+### Attendance tracker (demo: saved in the browser only, no login yet)
+| What you see | File |
+|---|---|
+| Wires the tracker together | `Attendance.jsx` |
+| Demo notice (delete when login arrives) | `attendance/DemoBanner.jsx` |
+| 4 headline numbers | `attendance/Summary.jsx` |
+| Mark one day's classes (Present / Absent / Not held) | `attendance/DayMarker.jsx` |
+| Month calendar | `attendance/CalendarGrid.jsx` |
+| Per-subject bars + advice | `attendance/SubjectStats.jsx` |
+| "Coming up" list | `attendance/KeyDates.jsx` |
+| Backup / restore / erase / attendance limit | `attendance/DataTools.jsx` |
+| All the maths (sessions, %, how many you can miss) | `lib/attendance.js` |
+| Where data is stored (swap this for the server when login exists) | `lib/useAttendance.js` |
 
 ### Notes section (dropdown inside dropdown)
 Subject dropdown > one dropdown per kind (Slides, Notes, PYQs...) > files. PYQs are split by exam.
