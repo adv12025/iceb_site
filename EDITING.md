@@ -25,7 +25,7 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 | Footer | `Footer.jsx` |
 | Background glow | `Background.jsx` |
 | Announcement cards | `Announcements.jsx` |
-| Notes section | `Notes.jsx` |
+| Notes section: filters + list of subjects | `Notes.jsx` |
 | Quick Links section | `Links.jsx` |
 | Shared bits (section heading, filter chips, helpers) | `ui.jsx` |
 
@@ -38,6 +38,17 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 | Weekly grid | `schedule/TimetableGrid.jsx` |
 | Small card/label pieces | `schedule/parts.jsx` |
 | The logic (today's classes, next class, extras, IST time) | `lib/schedule.js` |
+
+### Notes section (dropdown inside dropdown)
+Subject dropdown > one dropdown per kind (Slides, Notes, PYQs...) > files. PYQs are split by exam.
+| What you see | File |
+|---|---|
+| One subject dropdown (name, code, count badges) | `notes/SubjectCard.jsx` |
+| One kind dropdown inside it (Slides / PYQs / ...) | `notes/TypeGroup.jsx` |
+| One file row | `notes/ItemLink.jsx` |
+| Kinds, icons, order, PYQ exam grouping, title shortening | `notes/kinds.js` |
+
+To add a new kind (e.g. "tutorial"): add one line to `KINDS` in `notes/kinds.js`. Unknown kinds still show up under their own name.
 
 ## Other
 - `lib/content.js`: merges built-in data + admin content (+ optional Google Sheet).

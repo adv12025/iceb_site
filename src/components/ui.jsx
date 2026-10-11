@@ -10,14 +10,14 @@ export const href = u => {
   return (process.env.NEXT_PUBLIC_BASE_PATH || "") + "/" + u.replace(/^\/+/, "");
 };
 
-export function Chips({ items, value, onPick }) {
+export function Chips({ items, value, onPick, label }) {
   return (
     <div className="flex flex-wrap gap-2">
       {items.map(i => (
         <button key={i} onClick={() => onPick(i)}
           className={cx("rounded-full border px-3.5 py-1.5 text-sm font-semibold capitalize transition",
             value === i ? "border-transparent bg-gradient-to-br from-sky-600 to-cyan-500 text-white" : "border-line bg-card text-ink hover:border-accent")}>
-          {i}
+          {label && i !== "all" ? label(i).label : i}
         </button>
       ))}
     </div>
