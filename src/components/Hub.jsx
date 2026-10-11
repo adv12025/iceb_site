@@ -14,7 +14,7 @@ import Footer from "./Footer";
 import Schedule from "./Schedule";
 import Announcements from "./Announcements";
 import Notes from "./Notes";
-import Attendance from "./Attendance";
+import TrackerModal from "./attendance/TrackerModal";
 import Links from "./Links";
 
 const BASE = { announcements: ANNOUNCEMENTS, notes: NOTES, links: LINKS, changes: SCHEDULE_CHANGES, timetable: TIMETABLE };
@@ -22,11 +22,23 @@ export default function Hub({ content }) {
   const [q, setQ] = useState("");
   const [sheet, setSheet] = useState(null);
   const [active, setActive] = useState("");
+  const [tracker, setTracker] = useState(false);
+  const openTracker = () => { history.pushState(null, "", "#attendance"); setTracker(true); };
+  const closeTracker = () => { setTracker(false); if (location.hash === "#attendance") history.back(); };
   const search = useRef(null);
   const data = useMemo(() => buildData(BASE, content, sheet), [content, sheet]);
   const query = q.trim().toLowerCase();
 
   useEffect(() => { loadSheet(BASE).then(setSheet); }, []);
+
+  /* #attendance in the address opens the tracker; Back closes it */
+  useEffect(() => {
+    const sync = () => setTracker(location.hash === "#attendance");
+    sync();
+    addEventListener("hashchange", sync);
+    addEventListener("popstate", sync);
+    return () => { removeEventListener("hashchange", sync); removeEventListener("popstate", sync); };
+  }, []);
 
   useEffect(() => {
     const onKey = e => {
@@ -42,19 +54,20 @@ export default function Hub({ content }) {
     <>
       <Background />
 
-      <Header active={active} />
+      <Header active={active} onOpenTracker={openTracker} />
 
       <main>
-        <Hero q={q} setQ={setQ} search={search} />
+        <Hero q={q} setQ={setQ} search={search} onOpenTracker={openTracker} />
 
         <Section id="schedule" title="Class Schedule" icon={ic.schedule}><Schedule changes={data.changes} timetable={data.timetable} /></Section>
         <Section id="announcements" title="Announcements" icon={ic.announcements}><Announcements items={data.announcements} q={query} /></Section>
-        <Section id="attendance" title="Attendance Tracker" icon={ic.attendance}><Attendance timetable={data.timetable} changes={data.changes} /></Section>
         <Section id="notes" title="Notes" icon={ic.notes}><Notes notes={data.notes} q={query} /></Section>
         <Section id="links" title="Quick Links" icon={ic.links}><Links links={data.links} q={query} /></Section>
       </main>
 
       <Footer />
+
+      <TrackerModal open={tracker} onClose={closeTracker} timetable={data.timetable} changes={data.changes} />
     </>
   );
 }

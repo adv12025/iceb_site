@@ -1,5 +1,5 @@
 /* Top navigation links + the section icons. To add a section, add it here and in Hub.js. */
-export const NAV = [["schedule", "Schedule"], ["announcements", "Announcements"], ["attendance", "Attendance"], ["notes", "Notes"], ["links", "Links"]];
+export const NAV = [["schedule", "Schedule"], ["announcements", "Announcements"], ["notes", "Notes"], ["links", "Links"]];
 export const ic = {
   schedule: <><rect x="3" y="4" width="18" height="17" rx="3" /><path d="M8 2v4M16 2v4M3 10h18" /></>,
   announcements: <><path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z" /><path d="M16 8.5a5 5 0 0 1 0 7" /></>,

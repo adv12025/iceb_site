@@ -1,7 +1,8 @@
 import { SITE } from "@/data/site";
+import TrackerButton from "./attendance/TrackerButton";
 
 /* Big title + the search box. */
-export default function Hero({ q, setQ, search }) {
+export default function Hero({ q, setQ, search, onOpenTracker }) {
   return (
     <section id="home" className="mx-auto max-w-[1080px] px-5 pb-6 pt-16">
       <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-sm font-semibold text-mute">
@@ -15,6 +16,7 @@ export default function Hero({ q, setQ, search }) {
           className="w-full rounded-2xl border border-line bg-card py-3.5 pl-5 pr-12 shadow-card outline-none backdrop-blur focus:border-accent focus:ring-4 focus:ring-accent/20" />
         <kbd className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rounded-md border border-b-2 border-line bg-solid px-2 text-xs font-semibold text-mute">/</kbd>
       </label>
+      <TrackerButton big onClick={onOpenTracker} />
     </section>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
 import { SITE } from "@/data/site";
 import { NAV } from "./nav";
+import TrackerButton from "./attendance/TrackerButton";
 
 /* Sticky top bar: logo, section links, dark-mode button. `active` = section currently on screen. */
-export default function Header({ active }) {
+export default function Header({ active, onOpenTracker }) {
   const toggleTheme = () => {
     const t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = t;
@@ -21,7 +22,8 @@ export default function Header({ active }) {
             <a key={id} href={"#" + id} className={"rounded-full px-3 py-1.5 text-sm font-semibold transition hover:bg-soft " + (active === id ? "bg-soft text-accent" : "text-mute")}>{label}</a>
           ))}
         </nav>
-        <button onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle theme" className="ml-auto grid size-9 place-items-center rounded-full border border-line bg-solid sm:ml-0">
+        <TrackerButton onClick={onOpenTracker} />
+        <button onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle theme" className="grid size-9 place-items-center rounded-full border border-line bg-solid">
           <span className="dark:hidden">🌙</span><span className="hidden dark:inline">☀️</span>
         </button>
       </div>

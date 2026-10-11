@@ -43,6 +43,8 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 ### Attendance tracker (demo: saved in the browser only, no login yet)
 | What you see | File |
 |---|---|
+| The "Attendance" buttons (top bar + under the search box) | `attendance/TrackerButton.jsx` |
+| Full-screen page the buttons open (Esc / Back closes, `#attendance` link) | `attendance/TrackerModal.jsx` |
 | Wires the tracker together | `Attendance.jsx` |
 | Demo notice (delete when login arrives) | `attendance/DemoBanner.jsx` |
 | 4 headline numbers | `attendance/Summary.jsx` |
