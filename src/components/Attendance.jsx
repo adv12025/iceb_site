@@ -16,7 +16,7 @@ import DataTools from "./attendance/DataTools";
 /* Attendance tracker (DEMO): wires the pieces in ./attendance together.
    Logic lives in lib/attendance.js, storage in lib/useAttendance.js, dates in data/academic-calendar.js. */
 export default function Attendance({ timetable, changes }) {
-  const { user, openAuth } = useAuth();
+  const { user, status, openAuth } = useAuth();
   const att = useAttendance(CAL.minAttendance, user?.id);
   /* The clock is read only after mount: the page is pre-built, so a build-time "now" would be wrong and mismatch on hydration. */
   const [now, setNow] = useState(null);
@@ -34,6 +34,18 @@ export default function Attendance({ timetable, changes }) {
     () => (now ? allStats(timetable, changes, att.marks, now, att.threshold) : null),
     [timetable, changes, att.marks, now, att.threshold]
   );
+  /* The tracker is for logged-in students only. */
+  if (status === "loading") return <div className="rounded-2xl border border-dashed border-line p-6 text-center text-mute">Checking your login…</div>;
+  if (status === "out") {
+    return (
+      <div className="mx-auto mt-10 max-w-md rounded-3xl border border-line bg-card p-8 text-center shadow-card">
+        <div className="mb-3 text-4xl">🔒</div>
+        <h3 className="mb-2 text-xl font-bold">Log in to use the Attendance Tracker</h3>
+        <p className="mb-5 text-sm text-mute">Your marks are saved under your own account. Log in with your roll number and the password the CR gave you.</p>
+        <button onClick={() => openAuth("login")} className="rounded-xl bg-gradient-to-br from-sky-600 to-cyan-500 px-6 py-2.5 font-bold text-white transition hover:brightness-110">Log in</button>
+      </div>
+    );
+  }
   if (!stats || !selected) return <div className="rounded-2xl border border-dashed border-line p-6 text-center text-mute">Loading tracker…</div>;
   const { per, overall } = stats;
 
