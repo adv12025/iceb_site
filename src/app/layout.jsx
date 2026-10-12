@@ -1,4 +1,5 @@
 import "./globals.css";
+import AuthRoot from "@/components/auth/AuthRoot";
 
 export const metadata = {
   title: "ICE B Hub · NIT Trichy",
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeInit }} /></head>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen"><AuthRoot>{children}</AuthRoot></body>
     </html>
   );
 }

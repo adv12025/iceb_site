@@ -27,3 +27,6 @@ html[data-theme=dark] { color-scheme: dark; }
 body { background: var(--bg); color: var(--ink); font-family: "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif; -webkit-font-smoothing: antialiased; transition: background .3s, color .3s; }
 ::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
+
+/* the auth forms have their own Show/Hide button: hide Edge/IE native password reveal icon */
+input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear { display: none; }

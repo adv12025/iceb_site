@@ -10,8 +10,8 @@ export default function TrackerButton({ onClick, big }) {
       {icon} Attendance Tracker <span className="rounded-full bg-white/25 px-2 py-0.5 text-xs font-semibold">demo</span>
     </button>
   ) : (
-    <button onClick={onClick} className="ml-auto flex items-center gap-1.5 rounded-full sm:ml-0 bg-gradient-to-br from-sky-600 to-cyan-500 px-3.5 py-1.5 text-sm font-bold text-white transition hover:brightness-110">
-      {icon}<span>Attendance</span>
+    <button onClick={onClick} aria-label="Attendance tracker" className="ml-auto flex items-center gap-1.5 rounded-full sm:ml-0 bg-gradient-to-br from-sky-600 to-cyan-500 px-3.5 py-1.5 text-sm font-bold text-white transition hover:brightness-110">
+      {icon}<span className="hidden sm:inline">Attendance</span>
     </button>
   );
 }

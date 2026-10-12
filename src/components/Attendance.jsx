@@ -4,6 +4,7 @@ import { CAL } from "@/data/academic-calendar";
 import { allStats, lastClassDayOnOrBefore } from "@/lib/attendance";
 import { istNow } from "@/lib/schedule";
 import { useAttendance } from "@/lib/useAttendance";
+import { useAuth } from "@/lib/auth/AuthContext";
 import DemoBanner from "./attendance/DemoBanner";
 import Summary from "./attendance/Summary";
 import DayMarker from "./attendance/DayMarker";
@@ -15,7 +16,8 @@ import DataTools from "./attendance/DataTools";
 /* Attendance tracker (DEMO): wires the pieces in ./attendance together.
    Logic lives in lib/attendance.js, storage in lib/useAttendance.js, dates in data/academic-calendar.js. */
 export default function Attendance({ timetable, changes }) {
-  const att = useAttendance(CAL.minAttendance);
+  const { user, openAuth } = useAuth();
+  const att = useAttendance(CAL.minAttendance, user?.id);
   /* The clock is read only after mount: the page is pre-built, so a build-time "now" would be wrong and mismatch on hydration. */
   const [now, setNow] = useState(null);
   const [selected, setSelected] = useState(null);
@@ -37,7 +39,7 @@ export default function Attendance({ timetable, changes }) {
 
   return (
     <>
-      <DemoBanner />
+      <DemoBanner user={user} openAuth={openAuth} guestCount={att.guestCount} importGuest={att.importGuest} hasMarks={Object.keys(att.marks).length > 0} />
       <Summary overall={overall} now={now} threshold={att.threshold} />
       <div className="mb-5 grid gap-4 lg:grid-cols-[1.1fr_1fr]">
         <DayMarker date={selected} setDate={setSelected} timetable={timetable} changes={changes} marks={att.marks} mark={att.mark} now={now} />

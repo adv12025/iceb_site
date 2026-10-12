@@ -1,5 +1,7 @@
 # ICE B Hub: where to edit what
 
+More detail: `docs/AUTH.md` (login system) and `backend/README.md` (database + roadmap).
+
 Everything lives in `src/`. Each file does one job.
 
 ## Content you change often (no coding)
@@ -39,6 +41,20 @@ Use the admin tool (`ice-b-admin-next\Admin.bat`) for announcements, notes, link
 | Weekly grid | `schedule/TimetableGrid.jsx` |
 | Small card/label pieces | `schedule/parts.jsx` |
 | The logic (today's classes, next class, extras, IST time) | `lib/schedule.js` |
+
+### Login (accounts made by the CR, username = roll number; frontend done, backend not built yet): full guide in `docs/AUTH.md`
+| What you see / change | File |
+|---|---|
+| Rules: allowed email domain, roll number, password length, demo flag | `lib/auth/config.js` |
+| Form checks | `lib/auth/validate.js` |
+| Which backend is used (the ONE switch) | `lib/auth/provider.js` |
+| Demo backend (browser only) | `lib/auth/mockProvider.js` |
+| FAKE demo students (never real ones; repo is public) | `lib/auth/demoSeed.js` |
+| Forced first-login password change form | `components/auth/ChangePasswordForm.jsx` |
+| Makes unique random first passwords for the class (local, git-ignored output) | `scripts/make-roster.mjs` |
+| App-wide login state, `useAuth()` | `lib/auth/AuthContext.jsx` |
+| The dialog + the three forms | `components/auth/AuthModal.jsx`, `LoginForm.jsx`, `SignupForm.jsx`, `ForgotForm.jsx` |
+| Top-bar Log in / avatar menu | `components/auth/UserMenu.jsx` |
 
 ### Attendance tracker (demo: saved in the browser only, no login yet)
 | What you see | File |

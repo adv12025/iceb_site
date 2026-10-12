@@ -1,0 +1,1 @@
+{"name":"iceb-backend","private":true,"type":"module","scripts":{"test:db":"node scripts/test-db.mjs","test:provider":"node scripts/test-provider.mjs","test":"node scripts/test-db.mjs && node scripts/test-provider.mjs"}}

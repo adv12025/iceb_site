@@ -2,6 +2,7 @@
 import { SITE } from "@/data/site";
 import { NAV } from "./nav";
 import TrackerButton from "./attendance/TrackerButton";
+import UserMenu from "./auth/UserMenu";
 
 /* Sticky top bar: logo, section links, dark-mode button. `active` = section currently on screen. */
 export default function Header({ active, onOpenTracker }) {
@@ -14,7 +15,7 @@ export default function Header({ active, onOpenTracker }) {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-card backdrop-blur-xl">
       <div className="mx-auto flex max-w-[1080px] items-center gap-4 px-5 py-3">
-        <a href="#home" className="flex items-center gap-2 font-bold">
+        <a href="#home" className="flex shrink-0 items-center gap-2 whitespace-nowrap font-bold">
           <span className="rounded-lg bg-gradient-to-br from-sky-600 to-cyan-500 px-2 py-1 text-xs text-white">ICE</span>{SITE.title}
         </a>
         <nav className="ml-auto hidden gap-1 sm:flex" aria-label="Sections">
@@ -23,6 +24,7 @@ export default function Header({ active, onOpenTracker }) {
           ))}
         </nav>
         <TrackerButton onClick={onOpenTracker} />
+        <UserMenu onOpenTracker={onOpenTracker} />
         <button onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle theme" className="grid size-9 place-items-center rounded-full border border-line bg-solid">
           <span className="dark:hidden">🌙</span><span className="hidden dark:inline">☀️</span>
         </button>
