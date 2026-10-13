@@ -26,8 +26,8 @@ export default function Schedule({ changes, timetable }) {
 
   return (
     <>
-      <NowCards now={now} cur={cur} nxt={nxt} later={later} extras={upcomingExtras(changes, now)} />
-      {(today.length > 0 || holiday || notes.length > 0) && <TodayBox now={now} today={today} holiday={holiday} notes={notes} />}
+      {/* <NowCards now={now} cur={cur} nxt={nxt} later={later} extras={upcomingExtras(changes, now)} />
+      {(today.length > 0 || holiday || notes.length > 0) && <TodayBox now={now} today={today} holiday={holiday} notes={notes} />} */}
       <TimetableGrid timetable={timetable} now={now} />
     </>
   );
