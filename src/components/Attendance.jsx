@@ -51,7 +51,7 @@ export default function Attendance({ timetable, changes }) {
 
   return (
     <>
-      <DemoBanner user={user} openAuth={openAuth} guestCount={att.guestCount} importGuest={att.importGuest} hasMarks={Object.keys(att.marks).length > 0} />
+      <DemoBanner user={user} openAuth={openAuth} guestCount={att.guestCount} importGuest={att.importGuest} hasMarks={Object.keys(att.marks).length > 0} sync={att.sync} retrySync={att.retrySync} />
       <Summary overall={overall} now={now} threshold={att.threshold} />
       <div className="mb-5 grid gap-4 lg:grid-cols-[1.1fr_1fr]">
         <DayMarker date={selected} setDate={setSelected} timetable={timetable} changes={changes} marks={att.marks} mark={att.mark} now={now} />

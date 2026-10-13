@@ -28,7 +28,7 @@ export default function DataTools({ att }) {
       <button onClick={download} className={btn}>Download</button>
       <button onClick={() => file.current?.click()} className={btn}>Restore</button>
       <input ref={file} type="file" accept="application/json,.json" onChange={restore} hidden />
-      <button onClick={() => confirm("Erase ALL attendance marks saved in this browser?") && att.reset()} className={btn + " text-rose-400"}>Erase all</button>
+      <button onClick={() => confirm("Erase ALL your attendance marks? This also clears them from your account.") && att.reset()} className={btn + " text-rose-400"}>Erase all</button>
       <label className="ml-auto flex items-center gap-2 text-sm text-mute">
         Attendance limit
         <select value={att.threshold} onChange={e => att.setThreshold(+e.target.value)} className="rounded-lg border border-line bg-solid px-2 py-1 text-ink">
