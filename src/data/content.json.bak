@@ -276,6 +276,15 @@
       "course": "*",
       "action": "cancelled",
       "note": ""
+    },
+    {
+      "id": "mv74irop6g5",
+      "date": "2026-10-14",
+      "course": "Engineering Practice",
+      "action": "extra",
+      "start": "14:30",
+      "end": "16:30",
+      "note": "Cycle test"
     }
   ]
 }
