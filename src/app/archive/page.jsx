@@ -8,7 +8,11 @@ import { href } from "@/components/ui";
 
 /* Archive page — separate from the live site.
    Old papers, old announcements, old notices, retired data.
-   Accessible at /archive (not in the main navigation). */
+   Accessible at /archive (not in the main navigation).
+
+   Reads admin-added archive items from content.json.
+   After archiving/restoring in the admin panel, restart the hub dev server
+   (stop `npm run dev`, run it again) so the updated content.json is picked up. */
 export default function ArchivePage() {
   const [yr, setYr] = useState("all");
   const [type, setType] = useState("all");
