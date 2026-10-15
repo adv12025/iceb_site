@@ -263,7 +263,16 @@
       "url": "files/mv85k2gp_Gas_Turbines_edited.pdf"
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "id": "mva2omvfw95",
+      "name": "BRANCHES OF CIVIL ENGINEERING",
+      "group": "slides",
+      "icon": "🔗",
+      "desc": "",
+      "url": "files/mv1e28xz_BRANCHES_OF_CIVIL_ENGINEERING.pdf"
+    }
+  ],
   "changes": [
     {
       "id": "mv2eeswfegc",
@@ -296,17 +305,5 @@
       "note": "Cycle test"
     }
   ],
-  "archives": [
-    {
-      "id": "mva2omvfw95",
-      "type": "other",
-      "title": "BRANCHES OF CIVIL ENGINEERING",
-      "year": "2026-27",
-      "semester": "Semester 1",
-      "exam": "slides",
-      "date": "2026-10-16",
-      "url": "files/mv1e28xz_BRANCHES_OF_CIVIL_ENGINEERING.pdf",
-      "status": "archived"
-    }
-  ]
+  "archives": []
 }

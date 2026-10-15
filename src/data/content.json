@@ -236,15 +236,6 @@
       "url": "files/i1eei1of_PYQ_Basics_of_Civil_Engineering_Cycle_Test_2_-_27_Nov_2025.pdf"
     },
     {
-      "id": "mv3jzyxan80",
-      "semester": "Semester 1",
-      "subject": "Basics of Civil Engineering",
-      "code": "CEIR11",
-      "type": "slides",
-      "title": "01 05 Steel v2",
-      "url": "files/mv3jzyx6_01-05_Steel_v2.pdf"
-    },
-    {
       "id": "mv85jj9d1mt",
       "semester": "Semester 1",
       "subject": "Basics of Mechanical Engineering",
@@ -305,5 +296,17 @@
       "note": "Cycle test"
     }
   ],
-  "archives": []
+  "archives": [
+    {
+      "id": "mva32pfsk67",
+      "type": "slides",
+      "title": "01 05 Steel v2",
+      "year": "2026-27",
+      "semester": "Semester 1",
+      "exam": "slides",
+      "date": "2026-10-16",
+      "url": "files/mv3jzyx6_01-05_Steel_v2.pdf",
+      "status": "archived"
+    }
+  ]
 }
