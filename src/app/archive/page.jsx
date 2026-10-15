@@ -13,7 +13,8 @@ export default function ArchivePage() {
   const [yr, setYr] = useState("all");
   const [type, setType] = useState("all");
 
-  /* Merge built-in archive.js items with admin-added items from content.json */
+  /* Group admin-added archive items (from content.json) by year into blocks,
+     then merge with built-in archive.js blocks. */
   const adminArchives = useMemo(() => (content?.archives || []).map(a => ({
     id: a.id,
     type: a.type,
@@ -26,7 +27,16 @@ export default function ArchivePage() {
     status: a.status || "archived",
   })), [content]);
 
-  const allArchive = useMemo(() => [...ARCHIVE, ...adminArchives], [adminArchives]);
+  const adminByYear = useMemo(() => {
+    const m = new Map();
+    for (const a of adminArchives) {
+      if (!m.has(a.year)) m.set(a.year, { year: a.year, semester: a.semester, items: [] });
+      m.get(a.year).items.push(a);
+    }
+    return [...m.values()];
+  }, [adminArchives]);
+
+  const allArchive = useMemo(() => [...ARCHIVE, ...adminByYear], [adminByYear]);
 
   const years = useMemo(() => ["all", ...ARCHIVE_YEARS], []);
   const types = useMemo(() => ["all", ...ARCHIVE_TYPES.map(t => t.id)], []);
@@ -41,13 +51,14 @@ export default function ArchivePage() {
         : b.items.filter(i => {
             let tid = i.type;
             if (tid === "paper") tid = "papers";
+            else if (tid === "slides") tid = "slides";
             else if (tid === "announcement") tid = "announcements";
             else if (tid === "notice") tid = "notices";
             else if (tid === "syllabus" || tid === "other") tid = "retired";
             return tid === type;
           });
       return { ...b, items };
-    }).filter(b => b.items.length > 0);
+    }).filter(b => b.items && b.items.length > 0);
   }, [yr, type, allArchive]);
 
   const totalItems = blocks.reduce((n, b) => n + b.items.length, 0);
@@ -75,7 +86,7 @@ export default function ArchivePage() {
             <div>
               <h1 className="text-3xl font-extrabold text-ink">Archive</h1>
               <p className="text-mute text-sm mt-1">
-                Old papers, announcements, notices and retired data — segregated by year and type.
+                Old papers, announcements, notices, slides and retired data — segregated by year and type.
               </p>
             </div>
             <div className="flex items-center gap-2 text-sm text-mute">
