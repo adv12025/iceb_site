@@ -30,4 +30,10 @@ export const AUTH = {
   /* Demo only: pre-load a few FAKE test students (see lib/auth/demoSeed.js) so the login can be tried.
      Real students are never listed in this repo. Set false before going live. */
   demoSeed: !LIVE,
+
+  /* ---- admin / class rep ---- */
+  /* Path of the admin screen. Only a user whose profile role is "cr" may open it. */
+  adminPath: "/admin",
+  /* Demo only: roll numbers that are class reps. In live mode the `role` column in profiles decides. */
+  crRollNos: ["CR0001"],
 };

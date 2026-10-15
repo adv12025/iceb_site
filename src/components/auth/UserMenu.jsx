@@ -48,7 +48,7 @@ export default function UserMenu({ onOpenTracker }) {
             <button role="menuitem" className={item + " text-rose-400"} onClick={() => { setOpen(false); signOut(); }}>Log out</button>
           </div>
         </div>
-      )}
+      )} 
     </div>
   );
 }

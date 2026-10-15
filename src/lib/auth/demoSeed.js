@@ -5,6 +5,8 @@
    IMPORTANT: this repo is PUBLIC. Never put real roll numbers or real passwords in this file.
    Real accounts belong in the backend database, created by the roster tool (docs/AUTH.md, "Creating the student accounts"). */
 export const DEMO_SEED = [
-  { rollNo: "DEMO0001", name: "Demo Student One", email: "", initialPassword: "Welcome-7421" },
-  { rollNo: "DEMO0002", name: "Demo Student Two", email: "", initialPassword: "Welcome-5586" },
+  { rollNo: "CR0001", name: "Demo Class Rep", role: "cr", email: "", initialPassword: "CR-Admin-7421" },
+  { rollNo: "CR0002", name: "Demo Class Rep Two", role: "cr", email: "", initialPassword: "CR-Admin-5586" },
+  { rollNo: "DEMO0001", name: "Demo Student One", role: "student", email: "", initialPassword: "Welcome-7421" },
+  { rollNo: "DEMO0002", name: "Demo Student Two", role: "student", email: "", initialPassword: "Welcome-5586" },
 ];

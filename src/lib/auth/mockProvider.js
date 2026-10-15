@@ -25,7 +25,7 @@ const write = (key, value) => {
   catch { throw new AuthError(CODES.UNAVAILABLE, "Could not save: browser storage is blocked or full."); }
 };
 /* what the rest of the app is allowed to see (never the hash) */
-const publicUser = u => ({ id: u.id, name: u.name, rollNo: u.rollNo, email: u.email || "", createdAt: u.createdAt, mustChangePassword: !!u.mustChange });
+const publicUser = u => ({ id: u.id, name: u.name, rollNo: u.rollNo, email: u.email || "", role: u.role || "student", createdAt: u.createdAt, mustChangePassword: !!u.mustChange });
 const firstError = errs => { const [field, message] = Object.entries(errs)[0]; return new AuthError(CODES.INVALID, message, field); };
 const badLogin = () => new AuthError(CODES.BAD_CREDENTIALS, "Roll number or password is incorrect.");  // same text for both: do not reveal which
 
@@ -33,12 +33,18 @@ const badLogin = () => new AuthError(CODES.BAD_CREDENTIALS, "Roll number or pass
 async function seedUser(roll) {
   const s = AUTH.demoSeed && DEMO_SEED.find(x => normRoll(x.rollNo) === roll);
   if (!s) return null;
-  const user = { id: crypto.randomUUID(), name: s.name, rollNo: roll, email: s.email || "", createdAt: new Date().toISOString(), mustChange: AUTH.forceChangeOnFirstLogin, ...(await hashPassword(s.initialPassword)) };
+  const user = { id: crypto.randomUUID(), name: s.name, rollNo: roll, email: s.email || "", role: s.role || "student", createdAt: new Date().toISOString(), mustChange: AUTH.forceChangeOnFirstLogin, ...(await hashPassword(s.initialPassword)) };
   write(USERS, { ...read(USERS, {}), [roll]: user });
   return user;
 }
 
 const findById = id => Object.values(read(USERS, {})).find(x => x.id === id);
+
+/* the logged-in account (full record, includes hash) - used by admin methods to check the caller is a CR */
+async function currentUser() {
+  const s = read(SESSION, null);
+  return s && findById(s.userId);
+}
 
 async function getSession() {
   const s = read(SESSION, null);
@@ -50,7 +56,17 @@ async function signIn(input) {
   const errs = validateLogIn(input);
   if (Object.keys(errs).length) throw firstError(errs);
   const roll = normRoll(input.rollNo);
-  const u = read(USERS, {})[roll] || (await seedUser(roll));
+  let u = read(USERS, {})[roll];
+  if (!u) {
+    u = await seedUser(roll);
+  } else {
+    /* Backfill role for demo users created before roles existed (stale localStorage). */
+    const s = AUTH.demoSeed && DEMO_SEED.find(x => normRoll(x.rollNo) === roll);
+    if (s && s.role && u.role !== s.role) {
+      u = { ...u, role: s.role };
+      write(USERS, { ...read(USERS, {}), [roll]: u });
+    }
+  }
   if (!u || !(await verifyPassword(input.password, u))) throw badLogin();
   write(SESSION, { userId: u.id });
   return publicUser(u);
@@ -94,6 +110,75 @@ async function signUp(input) {
   return publicUser(user);
 }
 
+/* ---- CR / admin tools (demo mode; live mode needs a backend with the service_role key) ---- */
+
+/* Generate a random temporary password like Abcd-1234 */
+function makeTempPassword() {
+  const L = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
+  const D = "23456789";
+  const buf = new Uint8Array(8);
+  crypto.getRandomValues(buf);
+  const c = [
+    L[buf[0] % L.length], D[buf[1] % D.length],
+    L[buf[2] % L.length], D[buf[3] % D.length],
+    L[buf[4] % L.length], L[buf[5] % L.length],
+    D[buf[6] % D.length], L[buf[7] % L.length],
+  ];
+  return c.slice(0, 4).join("") + "-" + c.slice(4).join("");
+}
+
+/* Require the caller to be logged in as a class rep. */
+async function requireCR() {
+  const u = await currentUser();
+  if (!u) throw new AuthError(CODES.UNAVAILABLE, "You are not logged in. Please log in again.");
+  if (u.role !== "cr") throw new AuthError(CODES.INVALID, "Class rep only.");
+  return u;
+}
+
+/* List every account (public info only - never the hash). CR only. */
+async function listUsers() {
+  await requireCR();
+  return Object.values(read(USERS, {})).map(publicUser);
+}
+
+/* CR resets a student's password: random temp password, forced change on next login. CR only. */
+async function resetPassword(rollNo) {
+  await requireCR();
+  const roll = normRoll(rollNo);
+  const users = read(USERS, {});
+  const u = users[roll];
+  if (!u) throw new AuthError(CODES.BAD_CREDENTIALS, "No account for that roll number.", "rollNo");
+  const temp = makeTempPassword();
+  const updated = { ...u, ...(await hashPassword(temp)), mustChange: true };
+  write(USERS, { ...users, [roll]: updated });
+  return { rollNo: roll, tempPassword: temp };
+}
+
+/* CR creates a new student account. CR only. */
+async function createUser(rollNo, password, name) {
+  await requireCR();
+  const roll = normRoll(rollNo);
+  const errs = validateLogIn({ rollNo: roll, password });
+  if (Object.keys(errs).length) throw firstError(errs);
+  const users = read(USERS, {});
+  if (users[roll]) throw new AuthError(CODES.EMAIL_TAKEN, "An account with this roll number already exists.", "rollNo");
+  const user = { id: crypto.randomUUID(), name: (name || roll).trim(), rollNo: roll, email: "", role: "student", createdAt: new Date().toISOString(), mustChange: true, ...(await hashPassword(password)) };
+  write(USERS, { ...users, [roll]: user });
+  return publicUser(user);
+}
+
+/* CR sets whether a student must change their password on next login. CR only. */
+async function setMustChange(rollNo, flag) {
+  await requireCR();
+  const roll = normRoll(rollNo);
+  const users = read(USERS, {});
+  const u = users[roll];
+  if (!u) throw new AuthError(CODES.BAD_CREDENTIALS, "No account for that roll number.", "rollNo");
+  const updated = { ...u, mustChange: !!flag };
+  write(USERS, { ...users, [roll]: updated });
+  return publicUser(updated);
+}
+
 /* Called when the session changes in ANOTHER tab (log in/out there updates this tab too). Returns an unsubscribe function. */
 function onChange(callback) {
   const handler = e => { if (e.key === SESSION || e.key === null) getSession().then(callback); };
@@ -101,4 +186,4 @@ function onChange(callback) {
   return () => removeEventListener("storage", handler);
 }
 
-export const mockProvider = { name: "mock (this browser only)", getSession, signIn, signOut, changePassword, requestPasswordReset, signUp, onChange };
+export const mockProvider = { name: "mock (this browser only)", getSession, signIn, signOut, changePassword, requestPasswordReset, signUp, listUsers, resetPassword, createUser, setMustChange, onChange };

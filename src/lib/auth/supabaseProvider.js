@@ -30,7 +30,7 @@ function mapError(err, fallback = "Something went wrong. Please try again.") {
 export function createSupabaseProvider(client) {
   /* The student's profile row (database rules let a student read only their own). Roll number, optional nickname, forced-change flag. */
   async function loadUser(authUser) {
-    const { data, error } = await client.from("profiles").select("roll_no, display_name, must_change_password, created_at").eq("id", authUser.id).maybeSingle();
+    const { data, error } = await client.from("profiles").select("roll_no, display_name, role, must_change_password, created_at").eq("id", authUser.id).maybeSingle();
     if (error) throw mapError(error);
     if (!data) return null;                         // logged in but no profile: not one of our students
     return {
@@ -38,6 +38,7 @@ export function createSupabaseProvider(client) {
       name: data.display_name || data.roll_no,      // no real names are stored online: nickname if the student set one, else the roll number
       rollNo: data.roll_no,
       email: "",
+      role: data.role || "student",
       createdAt: data.created_at,
       mustChangePassword: !!data.must_change_password,
     };
@@ -97,6 +98,14 @@ export function createSupabaseProvider(client) {
     throw new AuthError(CODES.INVALID, "Sign-up is closed. Ask your CR for an account.");
   }
 
+  /* CR tools need the service_role key, which never goes in the browser. Run them from your own computer instead:
+     node backend/scripts/create-students.mjs --reset <rollNo>    (one password reset)
+     node backend/scripts/create-students.mjs --apply              (create accounts from roster) */
+  async function listUsers() { throw new AuthError(CODES.UNAVAILABLE, "Admin tools run from your computer: use backend/scripts/create-students.mjs"); }
+  async function resetPassword(rollNo) { throw new AuthError(CODES.UNAVAILABLE, "Admin tools run from your computer: use backend/scripts/create-students.mjs --reset <rollNo>"); }
+  async function createUser(rollNo, password, name) { throw new AuthError(CODES.UNAVAILABLE, "Admin tools run from your computer: use backend/scripts/create-students.mjs --apply"); }
+  async function setMustChange(rollNo, flag) { throw new AuthError(CODES.UNAVAILABLE, "Admin tools run from your computer: use backend/scripts/create-students.mjs --reset <rollNo>"); }
+
   /* Tell the app when login state changes (this tab, or another tab). Returns an unsubscribe function. */
   function onChange(callback) {
     const { data } = client.auth.onAuthStateChange((_event, session) => {
@@ -109,5 +118,5 @@ export function createSupabaseProvider(client) {
     return () => data.subscription.unsubscribe();
   }
 
-  return { name: "supabase", getSession, signIn, signOut, changePassword, requestPasswordReset, signUp, onChange };
+  return { name: "supabase", getSession, signIn, signOut, changePassword, requestPasswordReset, signUp, listUsers, resetPassword, createUser, setMustChange, onChange };
 }

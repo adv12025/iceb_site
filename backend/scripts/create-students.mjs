@@ -8,6 +8,7 @@
      node scripts/create-students.mjs                  DRY RUN (default): checks the file and shows what WOULD happen. Touches nothing.
      node scripts/create-students.mjs --apply          really create the accounts (asks you to confirm first)
      node scripts/create-students.mjs --reset 107125001   new temporary password for ONE student (printed once, forced change on next login)
+     node scripts/create-students.mjs --reset 107125001 --role cr   make that student a class rep (admin)
      --file path/to/other.csv                          use a different roster file
 
    Secrets: reads SUPABASE_URL and SUPABASE_SECRET_KEY from backend/.env.local (copy .env.example). That file is git-ignored.
@@ -27,6 +28,7 @@ const opt = n => (args.includes(n) ? args[args.indexOf(n) + 1] : undefined);
 
 const APPLY = flag("--apply");
 const RESET = opt("--reset");
+const ROLE = opt("--role");
 const file = opt("--file") || join(repo, "private", "roster-passwords.csv");
 
 /* ---------- tiny helpers ---------- */
@@ -81,6 +83,7 @@ function makeApi(url, key) {
     insertProfile: (id, roll) => call("POST", "/rest/v1/profiles", { id, roll_no: roll, must_change_password: true }, { Prefer: "return=minimal" }),
     findProfile: roll => call("GET", `/rest/v1/profiles?roll_no=eq.${encodeURIComponent(roll)}&select=id`),
     setPassword: (id, password) => call("PUT", `/auth/v1/admin/users/${id}`, { password }),
+    setRole: (id, role) => call("PATCH", `/rest/v1/profiles?id=eq.${id}`, { role }, { Prefer: "return=minimal" }),
     flagChange: id => call("PATCH", `/rest/v1/profiles?id=eq.${id}`, { must_change_password: true }, { Prefer: "return=minimal" }),
     deleteUser: id => call("DELETE", `/auth/v1/admin/users/${id}`),
   };
@@ -89,7 +92,7 @@ function makeApi(url, key) {
 const why = r => r.json?.msg || r.json?.message || r.json?.error_description || r.json?.error || r.json?.hint || JSON.stringify(r.json);
 
 /* ---------- reset one student ---------- */
-async function resetOne(api, rollRaw) {
+async function resetOne(api, rollRaw, role) {
   const roll = normRoll(rollRaw);
   if (!rollOk(roll)) die(`"${rollRaw}" is not a valid roll number.`);
   const pf = await api.findProfile(roll);
@@ -103,10 +106,16 @@ async function resetOne(api, rollRaw) {
   const temp = c.slice(0, 4).join("") + "-" + c.slice(4).join("");
   const a = await api.setPassword(id, temp);
   if (!a.ok) die(`Could not set the password: ${why(a)}`);
+  /* set role if requested (e.g. --role cr to make this account a class rep) */
+  if (role) {
+    const r = await api.setRole(id, role);
+    if (!r.ok) die(`Password was set but role update failed (${why(r)}).`);
+  }
   /* order matters: changing the password clears "must change password", so set it back to true AFTER */
   const b = await api.flagChange(id);
   if (!b.ok) die(`Password was changed but forcing the change failed (${why(b)}). Run the reset again.`);
   console.log(`\nNew temporary password for ${roll}:  ${temp}\nSend it to them privately. They must choose their own on next login.`);
+  if (role) console.log(`Role set to "${role}" for ${roll}.`);
 }
 
 /* ---------- main ---------- */
@@ -116,7 +125,7 @@ const KEY = env.SUPABASE_SECRET_KEY || "";
 
 if (RESET) {
   if (!URL_ || !KEY) die("Put SUPABASE_URL and SUPABASE_SECRET_KEY in backend/.env.local first (see .env.example).");
-  await resetOne(makeApi(URL_, KEY), RESET);
+  await resetOne(makeApi(URL_, KEY), RESET, ROLE);
   process.exit(0);
 }
 

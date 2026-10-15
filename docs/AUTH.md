@@ -244,7 +244,7 @@ Reset while testing: browser dev tools -> Application -> Local Storage -> delete
 8. Log out. The old (CR) password now fails; the new password works and is **not** forced again. Marks are back.
 9. *Change password* from the menu opens a form that **can** be closed.
 10. `DEMO0002` is independent (also forced to change); **Log out instead** works.
-11. Forgot password -> says to ask the CR (no email box).
+11. Forgot password -> asks for the roll number and builds a pre-filled message to the CR (WhatsApp if configured, otherwise copy). No email is sent.
 12. Phone width: header fits, dialog scrolls if needed.
 13. In dev tools check `iceb-auth-users-v2` contains no plain password.
 

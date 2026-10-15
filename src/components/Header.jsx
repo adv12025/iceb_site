@@ -19,9 +19,13 @@ export default function Header({ active, onOpenTracker }) {
           <span className="rounded-lg bg-gradient-to-br from-sky-600 to-cyan-500 px-2 py-1 text-xs text-white">ICE</span>{SITE.title}
         </a>
         <nav className="ml-auto hidden gap-1 sm:flex" aria-label="Sections">
-          {NAV.map(([id, label]) => (
-            <a key={id} href={"#" + id} className={"rounded-full px-3 py-1.5 text-sm font-semibold transition hover:bg-soft " + (active === id ? "bg-soft text-accent" : "text-mute")}>{label}</a>
-          ))}
+          {NAV.map(([id, label, url]) => {
+            const href = url || "#" + id;
+            const isPage = Boolean(url);
+            return (
+              <a key={id} href={href} className={"rounded-full px-3 py-1.5 text-sm font-semibold transition hover:bg-soft " + (active === id ? "bg-soft text-accent" : "text-mute")}>{label}</a>
+            );
+          })}
         </nav>
         <TrackerButton onClick={onOpenTracker} />
         <UserMenu onOpenTracker={onOpenTracker} />

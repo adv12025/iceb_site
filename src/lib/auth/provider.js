@@ -20,6 +20,7 @@ function lazy(load) {
     name: "supabase",
     getSession: call("getSession"), signIn: call("signIn"), signOut: call("signOut"),
     changePassword: call("changePassword"), requestPasswordReset: call("requestPasswordReset"), signUp: call("signUp"),
+    listUsers: call("listUsers"), resetPassword: call("resetPassword"), createUser: call("createUser"), setMustChange: call("setMustChange"),
     onChange(callback) {
       let off, dead = false;
       get().then(p => { if (!dead) off = p.onChange(callback); });

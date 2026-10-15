@@ -19,7 +19,7 @@ export default function Field({ label, error, hint, type = "text", optional, ...
             error ? "border-rose-500 focus:border-rose-500" : "border-line focus:border-accent", isPw && "pr-14")}
           {...input} />
         {isPw && (
-          <button type="button" onClick={() => setShown(s => !s)} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-semibold text-mute hover:text-ink">
+          <button type="button" onClick={() => setShown(s => !s)} aria-pressed={shown} className="absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-md bg-card border border-line px-2.5 py-1.5 text-xs font-semibold text-ink hover:bg-soft transition focus:outline-none">
             {shown ? "Hide" : "Show"}
           </button>
         )}

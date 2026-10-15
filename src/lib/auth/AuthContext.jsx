@@ -6,7 +6,8 @@ import { auth } from "./provider";
 
      const { user, status, openAuth, signOut } = useAuth();
      status: "loading" (checking saved login) | "in" | "out"
-     user:   { id, name, rollNo, email, createdAt, mustChangePassword } or null
+     user:   { id, name, rollNo, email, role, createdAt, mustChangePassword } or null
+     isCR:   true when the logged-in account is a class rep (role "cr")
      openAuth("login" | "signup" | "forgot" | "password")  opens the dialog;  closeAuth() closes it
      (if user.mustChangePassword is true the dialog is forced open on "password" and cannot be closed: see AuthModal)
 */
@@ -28,6 +29,8 @@ export function AuthProvider({ children }) {
 
   const value = useMemo(() => ({
     user, status, dialog,
+    /* true when the logged-in account is a class rep (role "cr") */
+    isCR: user?.role === "cr",
     openAuth: (mode = "login") => setDialog(mode),
     closeAuth: () => setDialog(null),
     /* these throw an AuthError (see lib/auth/errors.js): the forms catch it and show the message */
@@ -36,6 +39,11 @@ export function AuthProvider({ children }) {
     changePassword: async input => { const u = await auth.changePassword(input); apply(u); return u; },
     signOut: async () => { await auth.signOut(); apply(null); },
     resetPassword: input => auth.requestPasswordReset(input),
+    /* CR-only tools: list students, reset a password, create an account, force password change */
+    listUsers: () => auth.listUsers(),
+    resetUserPassword: (rollNo) => auth.resetPassword(rollNo),
+    createUser: (rollNo, password, name) => auth.createUser(rollNo, password, name),
+    setMustChange: (rollNo, flag) => auth.setMustChange(rollNo, flag),
   }), [user, status, dialog, apply]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
