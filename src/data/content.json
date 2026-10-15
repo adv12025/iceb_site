@@ -38,15 +38,6 @@
       "url": "files/mv1e21ub_01-04_Concrete_v1.pdf"
     },
     {
-      "id": "mv1e28y1uwx",
-      "semester": "Semester 1",
-      "subject": "Basics of Civil Engineering",
-      "code": "CEIR11",
-      "type": "slides",
-      "title": "BRANCHES OF CIVIL ENGINEERING",
-      "url": "files/mv1e28xz_BRANCHES_OF_CIVIL_ENGINEERING.pdf"
-    },
-    {
       "id": "mv1e2o3dij1",
       "semester": "Semester 1",
       "subject": "Basics of Mechanical Engineering",
@@ -303,6 +294,19 @@
       "start": "14:30",
       "end": "16:30",
       "note": "Cycle test"
+    }
+  ],
+  "archives": [
+    {
+      "id": "mva2omvfw95",
+      "type": "other",
+      "title": "BRANCHES OF CIVIL ENGINEERING",
+      "year": "2026-27",
+      "semester": "Semester 1",
+      "exam": "slides",
+      "date": "2026-10-16",
+      "url": "files/mv1e28xz_BRANCHES_OF_CIVIL_ENGINEERING.pdf",
+      "status": "archived"
     }
   ]
 }

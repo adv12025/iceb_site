@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { Section, Chips, Empty } from "@/components/ui";
 import Header from "@/components/Header";
 import { ARCHIVE, ARCHIVE_TYPES, ARCHIVE_YEARS, groupByType } from "@/data/archive";
+import content from "@/data/content.json";
 import { href } from "@/components/ui";
 
 /* Archive page — separate from the live site.
@@ -12,13 +13,26 @@ export default function ArchivePage() {
   const [yr, setYr] = useState("all");
   const [type, setType] = useState("all");
 
-  const query = ""; // reserved for search if needed later
+  /* Merge built-in archive.js items with admin-added items from content.json */
+  const adminArchives = useMemo(() => (content?.archives || []).map(a => ({
+    id: a.id,
+    type: a.type,
+    title: a.title,
+    year: a.year,
+    semester: a.semester || "",
+    exam: a.exam || "",
+    date: a.date,
+    url: a.url,
+    status: a.status || "archived",
+  })), [content]);
+
+  const allArchive = useMemo(() => [...ARCHIVE, ...adminArchives], [adminArchives]);
 
   const years = useMemo(() => ["all", ...ARCHIVE_YEARS], []);
   const types = useMemo(() => ["all", ...ARCHIVE_TYPES.map(t => t.id)], []);
 
   const blocks = useMemo(() => {
-    return ARCHIVE.filter(b => {
+    return allArchive.filter(b => {
       if (yr !== "all" && b.year !== yr) return false;
       return true;
     }).map(b => {
@@ -34,7 +48,7 @@ export default function ArchivePage() {
           });
       return { ...b, items };
     }).filter(b => b.items.length > 0);
-  }, [yr, type]);
+  }, [yr, type, allArchive]);
 
   const totalItems = blocks.reduce((n, b) => n + b.items.length, 0);
   const totalFiles = blocks.reduce((n, b) => n + b.items.filter(i => i.url).length, 0);
@@ -55,7 +69,6 @@ export default function ArchivePage() {
       <Header active="archive" onOpenTracker={() => {}} />
 
       <div className="pt-20"></div>
-      {/* Header */}
       <div className="max-w-[1080px] mx-auto mb-6">
         <div className="rounded-3xl border border-line bg-card p-6 sm:p-8 shadow-card backdrop-blur">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -72,13 +85,11 @@ export default function ArchivePage() {
         </div>
       </div>
 
-      {/* Filters */}
       <div className="max-w-[1080px] mx-auto mb-4 grid gap-3">
         <Chips items={years} value={yr} onPick={setYr} />
         <Chips items={types} value={type} onPick={setType} />
       </div>
 
-      {/* Content */}
       <div className="max-w-[1080px] mx-auto">
         {blocks.length === 0 ? (
           <Empty>No archive items match your filters.</Empty>
