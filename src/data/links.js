@@ -9,5 +9,5 @@ export const LINKS = [
   { group: "Mail & Accounts", icon: "✉️", name: "Webmail Login", desc: "Institute email", url: "https://students.nitt.edu/rcmail/" },
   { group: "Campus Life", icon: "🍽️", name: "Mess Dashboard", desc: "Menu, billing, mess registration", url: "https://dashboard.nitt.edu/" },
   { group: "Campus Life", icon: "🏠", name: "Hostel Portal", desc: "Leave, room & complaints", url: "" },
-  { group: "Department", icon: "⚙️", name: "ICE Department", desc: "Faculty, syllabus, notices", url: "" }
+  // { group: "Department", icon: "⚙️", name: "ICE Department", desc: "Faculty, syllabus, notices", url: "" }
 ];
