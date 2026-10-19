@@ -339,16 +339,6 @@
       "title": "Test Upload",
       "url": "https://example.com/test",
       "uploadedBy": "test-user-123"
-    },
-    {
-      "id": "mvfdrlabfyb",
-      "semester": "Semester 1",
-      "subject": "Energy and Environmental Engineering",
-      "code": "",
-      "type": "notes",
-      "title": "Air Pollution material 1",
-      "url": "files/uploads/6dbfc2f9-6231-4b74-867d-29f6758e3d59/mvfdrla8_Air_Pollution_material-1.pdf",
-      "uploadedBy": "6dbfc2f9-6231-4b74-867d-29f6758e3d59"
     }
   ],
   "links": [],
@@ -384,5 +374,19 @@
       "note": "Cycle test"
     }
   ],
-  "archives": []
+  "archives": [],
+  "essays": [
+    {
+      "id": "mvfebu52t6r",
+      "studentId": "student-001",
+      "studentName": "Alice Student",
+      "studentRoll": "ICE21001",
+      "assignment": "Essay Assignment",
+      "title": "My Essay on Climate Change",
+      "body": "Climate change is one of the most pressing issues of our time. Rising temperatures, melting glaciers, and extreme weather events are affecting ecosystems worldwide. We must act now to reduce carbon emissions and transition to renewable energy sources. Every individual action counts, from reducing plastic use to supporting green policies. Together we can make a difference.",
+      "wordCount": 56,
+      "date": "2026-10-19",
+      "submittedAt": "2026-10-19T15:15:22.088Z"
+    }
+  ]
 }
