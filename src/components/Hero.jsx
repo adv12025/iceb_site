@@ -16,7 +16,7 @@ export default function Hero({ q, setQ, search, onOpenTracker }) {
           className="w-full rounded-2xl border border-line bg-card py-3.5 pl-5 pr-12 shadow-card outline-none backdrop-blur focus:border-accent focus:ring-4 focus:ring-accent/20" />
         <kbd className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 rounded-md border border-b-2 border-line bg-solid px-2 text-xs font-semibold text-mute">/</kbd>
       </label>
-      <TrackerButton big onClick={onOpenTracker} />
+      {/* <TrackerButton big onClick={onOpenTracker} /> */}
     </section>
   );
 }
