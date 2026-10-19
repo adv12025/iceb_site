@@ -1,5 +1,17 @@
 {
-  "announcements": [],
+  "announcements": [
+    {
+      "id": "mvf1991emns",
+      "date": "2026-10-19",
+      "tag": "clubs",
+      "pinned": false,
+      "title": "TRANSFINITTE’26 | REGISTRATIONS ARE LIVE",
+      "body": "42 hours of innovation, collaboration, and problem-solving awaits. Bring your ideas to life, push boundaries, and build something extraordinary.\nRegistration deadline: 20 October 2026",
+      "link": "register.transfinitte.org",
+      "linkLabel": "Register",
+      "contacts": "https://www.instagram.com/p/DelVs1Vphih/?psln=MXNrYWtneDJ3ZnIzdw=="
+    }
+  ],
   "notes": [
     {
       "id": "mv1e0vxq5pz",
