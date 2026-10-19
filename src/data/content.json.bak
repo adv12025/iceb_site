@@ -387,6 +387,18 @@
       "wordCount": 56,
       "date": "2026-10-19",
       "submittedAt": "2026-10-19T15:15:22.088Z"
+    },
+    {
+      "id": "mvfemaiov5d",
+      "studentId": "student-001",
+      "studentName": "Alice Student",
+      "studentRoll": "ICE21001",
+      "assignment": "Essay Assignment",
+      "title": "Climate Change Essay",
+      "filename": "climate_essay.txt",
+      "url": "files/uploads/essays/student-001/mvfemaim_climate_essay.txt",
+      "date": "2026-10-19",
+      "submittedAt": "2026-10-19T15:23:29.856Z"
     }
   ]
 }

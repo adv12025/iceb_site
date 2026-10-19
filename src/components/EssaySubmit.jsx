@@ -4,9 +4,9 @@ import { useAuth } from "@/lib/auth/AuthContext";
 import { cx, href } from "./ui";
 
 /* Student essay submission: upload an essay file (PDF/DOC/etc).
-   Stored under files/uploads/essays/<userId>/ and tagged with the
-   student's account id so the teacher can review all submissions
-   segregated by student. Also shows the student's own uploaded essays. */
+   Stored under files/uploads/essays/<rollNo>/ and tagged with the
+   student's roll number so the teacher can review all submissions
+   segregated by roll number. Also shows the student's own uploaded essays. */
 export default function EssaySubmit() {
   const { user } = useAuth();
   const [file, setFile] = useState(null);
@@ -21,7 +21,7 @@ export default function EssaySubmit() {
 
   useEffect(() => {
     if (!user) return;
-    fetch(API + "/api/essay", { headers: { "X-User-Id": user.id } })
+    fetch(API + "/api/essay", { headers: { "X-Student-Roll": user.rollNo } })
       .then(async r => { if (!r.ok) throw new Error(await r.text()); return r.json(); })
       .then(j => setMyEssays(j.essays || []))
       .catch(() => {});
@@ -43,7 +43,7 @@ export default function EssaySubmit() {
     try {
       const r = await fetch(API + "/api/essay", {
         method: "POST",
-        headers: { "X-User-Id": user.id },
+        headers: { "X-Student-Roll": user.rollNo },
         body: fd,
       });
       const j = await r.json();
