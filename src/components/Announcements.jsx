@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Chips, Empty, fmtDate, href, cx } from "./ui";
 
 const TAGS = ["all", "clubs", "events", "scholarships", "academic" , "class" , "sports"];
-const TAG_COLOR = { clubs: "text-[var(--clubs)]", events: "text-[var(--events)]", scholarships: "text-[var(--scholarships)]", academic: "text-[var(--academic)]" };
+const TAG_COLOR = { clubs: "text-[var(--clubs)]", events: "text-[var(--events)]", scholarships: "text-[var(--scholarships)]", academic: "text-[var(--academic)]", class: "text-[var(--class)]", sports: "text-[var(--sports)]" };
 
 /* One contact per line; phone numbers and emails become tap-to-call / tap-to-mail links. */
 function Contact({ line }) {
