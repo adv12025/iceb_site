@@ -410,6 +410,17 @@
       "url": "files/uploads/essays/ICE21001/mvff3i4p_essay.txt",
       "date": "2026-10-19",
       "submittedAt": "2026-10-19T15:36:52.875Z"
+    },
+    {
+      "id": "mvff3kdynwk",
+      "rollNo": "ICE21002",
+      "studentName": "Bob Student",
+      "assignment": "Essay Assignment",
+      "title": "Bob Energy Essay",
+      "filename": "essay.txt",
+      "url": "files/uploads/essays/ICE21002/mvff3kdy_essay.txt",
+      "date": "2026-10-19",
+      "submittedAt": "2026-10-19T15:36:55.799Z"
     }
   ]
 }
