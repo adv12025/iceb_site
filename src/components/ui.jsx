@@ -3,10 +3,21 @@ export const cx = (...a) => a.filter(Boolean).join(" ");
 export const fmtDate = d =>
   new Date(d + "T00:00").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
-/* Links stored as "files/…" are uploads served from this site; respect the base path. */
+/*
+ * Resolve a stored link to a clickable URL.
+ * - "files/…" → internal upload served from this site (respect base path)
+ * - "http(s)://…" → external link, used as-is
+ * - bare domain like "register.transfinitte.org" (no protocol) → external link, prefix https://
+ *   so it opens the real site instead of a broken relative path on this hub.
+ * - anything else (relative "/…" or "./…") → site path, respect base path.
+ */
 export const href = u => {
   if (!u) return "#";
   if (/^https?:\/\//i.test(u)) return u;
+  const looksLikeDomain = /^[a-z0-9-]+(\.[a-z0-9-]+)+([/?].*)?$/i.test(u)
+    && !u.startsWith("/") && !u.startsWith("./") && !u.startsWith("../")
+    && !u.toLowerCase().startsWith("files/");
+  if (looksLikeDomain) return "https://" + u;
   return (process.env.NEXT_PUBLIC_BASE_PATH || "") + "/" + u.replace(/^\/+/, "");
 };
 
