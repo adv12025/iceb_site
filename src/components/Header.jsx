@@ -1,6 +1,7 @@
 "use client";
 import { SITE } from "@/data/site";
 import { NAV } from "./nav";
+import { href } from "@/components/ui";
 import TrackerButton from "./attendance/TrackerButton";
 import UserMenu from "./auth/UserMenu";
 
@@ -20,10 +21,10 @@ export default function Header({ active, onOpenTracker }) {
         </a>
         <nav className="ml-auto hidden gap-1 sm:flex" aria-label="Sections">
           {NAV.map(([id, label, url]) => {
-            const href = url || "#" + id;
+            const link = url ? href(url) : "#" + id;
             const isPage = Boolean(url);
             return (
-              <a key={id} href={href} className={"rounded-full px-3 py-1.5 text-sm font-semibold transition hover:bg-soft " + (active === id ? "bg-soft text-accent" : "text-mute")}>{label}</a>
+              <a key={id} href={link} className={"rounded-full px-3 py-1.5 text-sm font-semibold transition hover:bg-soft " + (active === id ? "bg-soft text-accent" : "text-mute")}>{label}</a>
             );
           })}
         </nav>

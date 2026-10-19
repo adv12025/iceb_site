@@ -1,9 +1,9 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Section, Chips, Empty } from "@/components/ui";
 import Header from "@/components/Header";
 import { ARCHIVE, ARCHIVE_TYPES, ARCHIVE_YEARS, groupByType } from "@/data/archive";
-import content from "@/data/content.json";
+import staticContent from "@/data/content.json";
 import { href } from "@/components/ui";
 
 /* Archive page — separate from the live site.
@@ -11,11 +11,23 @@ import { href } from "@/components/ui";
    Accessible at /archive (not in the main navigation).
 
    Reads admin-added archive items from content.json.
-   After archiving/restoring in the admin panel, restart the hub dev server
-   (stop `npm run dev`, run it again) so the updated content.json is picked up. */
+   Tries to fetch a fresh copy at runtime so admin-added archives show
+   without rebuilding; falls back to the statically imported copy. */
 export default function ArchivePage() {
   const [yr, setYr] = useState("all");
   const [type, setType] = useState("all");
+  const [liveContent, setLiveContent] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/content.json")
+      .then(async r => { if (!r.ok) throw new Error("failed"); return r.json(); })
+      .then(data => { if (!cancelled) setLiveContent(data); })
+      .catch(() => {}); // fall back to static import
+    return () => { cancelled = true; };
+  }, []);
+
+  const content = liveContent || staticContent;
 
   /* Group admin-added archive items (from content.json) by year into blocks,
      then merge with built-in archive.js blocks. */
