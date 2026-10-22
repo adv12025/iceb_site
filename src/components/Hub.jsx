@@ -16,8 +16,6 @@ import Announcements from "./Announcements";
 import Notes from "./Notes";
 import TrackerModal from "./attendance/TrackerModal";
 import Links from "./Links";
-import EssaySubmit from "./EssaySubmit";
-import { useAuth } from "@/lib/auth/AuthContext";
 
 const BASE = { announcements: ANNOUNCEMENTS, notes: NOTES, links: LINKS, changes: SCHEDULE_CHANGES, timetable: TIMETABLE };
 export default function Hub({ content }) {
@@ -25,7 +23,6 @@ export default function Hub({ content }) {
   const [sheet, setSheet] = useState(null);
   const [active, setActive] = useState("");
   const [tracker, setTracker] = useState(false);
-  const { user } = useAuth();
   const openTracker = () => { history.pushState(null, "", "#attendance"); setTracker(true); };
   const closeTracker = () => { setTracker(false); if (location.hash === "#attendance") history.back(); };
   const search = useRef(null);
@@ -65,7 +62,6 @@ export default function Hub({ content }) {
         <Section id="schedule" title="Class Schedule" icon={ic.schedule}><Schedule changes={data.changes} timetable={data.timetable} /></Section>
         <Section id="announcements" title="Announcements" icon={ic.announcements}><Announcements items={data.announcements} q={query} /></Section>
         <Section id="notes" title="Notes" icon={ic.notes}><Notes notes={data.notes} q={query} /></Section>
-        {user && <Section id="my-essays" title="My Essays" icon={ic.notes}><EssaySubmit /></Section>}
         <Section id="links" title="Quick Links" icon={ic.links}><Links links={data.links} q={query} /></Section>
       </main>
 

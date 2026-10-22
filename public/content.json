@@ -1,6 +1,17 @@
 {
   "announcements": [
     {
+      "id": "mvj646cabd7",
+      "date": "2026-10-22",
+      "tag": "academic",
+      "pinned": true,
+      "title": "EEE ASSIGNMENT",
+      "body": "Upload your EEE essay using the provided Google Form link.\nSubmission Guidelines:\n\n1.File format: PDF only.\n2.File size: Less than 10 MB.\n3.File name: RollNumber_EEE.pdf\n(Example: If your roll number is 102301, name your file 102301_EEE.pdf.)\n\nDeadline : 27/10/2026",
+      "link": "https://docs.google.com/forms/d/e/1FAIpQLSeKAiL-mmv67ck3S9MB12G-_8ItdbYaRmEAKGy338EPAiSwNA/viewform?usp=sharing&ouid=109171049131228585999",
+      "linkLabel": "Submit",
+      "contacts": ""
+    },
+    {
       "id": "mvf9gfp32et",
       "date": "2026-10-19",
       "tag": "events",
@@ -375,63 +386,5 @@
     }
   ],
   "archives": [],
-  "essays": [
-    {
-      "id": "mvfebu52t6r",
-      "studentId": "student-001",
-      "studentName": "Alice Student",
-      "studentRoll": "ICE21001",
-      "assignment": "Essay Assignment",
-      "title": "My Essay on Climate Change",
-      "body": "Climate change is one of the most pressing issues of our time. Rising temperatures, melting glaciers, and extreme weather events are affecting ecosystems worldwide. We must act now to reduce carbon emissions and transition to renewable energy sources. Every individual action counts, from reducing plastic use to supporting green policies. Together we can make a difference.",
-      "wordCount": 56,
-      "date": "2026-10-19",
-      "submittedAt": "2026-10-19T15:15:22.088Z"
-    },
-    {
-      "id": "mvfemaiov5d",
-      "studentId": "student-001",
-      "studentName": "Alice Student",
-      "studentRoll": "ICE21001",
-      "assignment": "Essay Assignment",
-      "title": "Climate Change Essay",
-      "filename": "climate_essay.txt",
-      "url": "files/uploads/essays/student-001/mvfemaim_climate_essay.txt",
-      "date": "2026-10-19",
-      "submittedAt": "2026-10-19T15:23:29.856Z"
-    },
-    {
-      "id": "mvff3i4rn5s",
-      "rollNo": "ICE21001",
-      "studentName": "Alice Student",
-      "assignment": "Essay Assignment",
-      "title": "Alice Climate Essay",
-      "filename": "essay.txt",
-      "url": "files/uploads/essays/ICE21001/mvff3i4p_essay.txt",
-      "date": "2026-10-19",
-      "submittedAt": "2026-10-19T15:36:52.875Z"
-    },
-    {
-      "id": "mvff3kdynwk",
-      "rollNo": "ICE21002",
-      "studentName": "Bob Student",
-      "assignment": "Essay Assignment",
-      "title": "Bob Energy Essay",
-      "filename": "essay.txt",
-      "url": "files/uploads/essays/ICE21002/mvff3kdy_essay.txt",
-      "date": "2026-10-19",
-      "submittedAt": "2026-10-19T15:36:55.799Z"
-    },
-    {
-      "id": "mvff3minx2p",
-      "rollNo": "ICE21001",
-      "studentName": "Alice Student",
-      "assignment": "Essay Assignment",
-      "title": "Alice Pollution Essay",
-      "filename": "essay.txt",
-      "url": "files/uploads/essays/ICE21001/mvff3mim_essay.txt",
-      "date": "2026-10-19",
-      "submittedAt": "2026-10-19T15:36:58.559Z"
-    }
-  ]
+  "essays": []
 }
