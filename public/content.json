@@ -375,6 +375,15 @@
       "type": "pyq",
       "title": "CIVIL_CT1",
       "url": "files/mvku0z74_Civil_CT1.pdf"
+    },
+    {
+      "id": "mvku1dybdol",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "pyq",
+      "title": "MECH_CT1",
+      "url": "files/mvku1dxk_Mech_CT1.pdf"
     }
   ],
   "links": [],
