@@ -339,6 +339,15 @@
       "title": "Test Upload",
       "url": "https://example.com/test",
       "uploadedBy": "test-user-123"
+    },
+    {
+      "id": "mvktzjliyvv",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "pyq",
+      "title": "CS_CT1",
+      "url": "files/mvktzjlf_CS_CT1.pdf"
     }
   ],
   "links": [],
