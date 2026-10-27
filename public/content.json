@@ -331,16 +331,6 @@
       "url": "files/mvf0mpzb_Air_Pollution_material-1.pdf"
     },
     {
-      "id": "mvfdnx3yl41",
-      "semester": "Semester 1",
-      "subject": "Test Subject",
-      "code": "",
-      "type": "notes",
-      "title": "Test Upload",
-      "url": "https://example.com/test",
-      "uploadedBy": "test-user-123"
-    },
-    {
       "id": "mvktzjliyvv",
       "semester": "Semester 1",
       "subject": "Introduction to Computer Programming",
@@ -384,6 +374,15 @@
       "type": "pyq",
       "title": "MECH_CT1",
       "url": "files/mvku1dxk_Mech_CT1.pdf"
+    },
+    {
+      "id": "mvr0omhqaa0",
+      "semester": "Semester 1",
+      "subject": "Basics of Civil Engineering",
+      "code": "CEIR11",
+      "type": "assignment",
+      "title": "Civil Assignment",
+      "url": "files/mvr0omhk_Assignment_1_CEIR11_ICE_B_July_2026.pdf"
     }
   ],
   "links": [],
