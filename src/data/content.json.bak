@@ -1,6 +1,17 @@
 {
   "announcements": [
     {
+      "id": "mvsactd5uks",
+      "date": "2026-10-28",
+      "tag": "academic",
+      "pinned": false,
+      "title": "Fees Remission Form",
+      "body": "Fees remission notice is shared below.\nFor additional information contact the CRs.",
+      "link": "https://drive.google.com/file/d/1US37ttcyOnd3cDWgOg9ITZBLLIS-sRmH/view?usp=sharing",
+      "linkLabel": "Notice",
+      "contacts": ""
+    },
+    {
       "id": "mvr0xufd2z8",
       "date": "2026-10-27",
       "tag": "academic",
