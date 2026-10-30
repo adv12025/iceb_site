@@ -313,15 +313,6 @@
       "url": "files/mvf0mpzb_Air_Pollution_material-1.pdf"
     },
     {
-      "id": "mvktzjliyvv",
-      "semester": "Semester 1",
-      "subject": "Introduction to Computer Programming",
-      "code": "CSIR11",
-      "type": "pyq",
-      "title": "CS_CT1",
-      "url": "files/mvktzjlf_CS_CT1.pdf"
-    },
-    {
       "id": "mvku016bw9j",
       "semester": "Semester 1",
       "subject": "Linear Algebra and Calculus",
@@ -427,6 +418,27 @@
       "note": "Cycle test"
     }
   ],
-  "archives": [],
+  "archives": [
+    {
+      "id": "mvtqpejust0",
+      "originalItem": {
+        "id": "mvktzjliyvv",
+        "semester": "Semester 1",
+        "subject": "Introduction to Computer Programming",
+        "code": "CSIR11",
+        "type": "pyq",
+        "title": "CS_CT1",
+        "url": "files/mvktzjlf_CS_CT1.pdf"
+      },
+      "type": "paper",
+      "title": "CS_CT1",
+      "year": "2026-27",
+      "semester": "Semester 1",
+      "exam": "pyq",
+      "date": "2026-10-29",
+      "url": "files/mvktzjlf_CS_CT1.pdf",
+      "status": "archived"
+    }
+  ],
   "essays": []
 }
