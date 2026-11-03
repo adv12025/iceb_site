@@ -383,6 +383,15 @@
       "type": "slides",
       "title": "WaterResource",
       "url": "files/mvtd5qsj_WaterResource.pdf"
+    },
+    {
+      "id": "mvv49env4n6",
+      "semester": "Semester 1",
+      "subject": "Introduction to Computer Programming",
+      "code": "CSIR11",
+      "type": "slides",
+      "title": "Unit3",
+      "url": "files/mvv49enr_CSIR11-Unit_3.pdf"
     }
   ],
   "links": [],
