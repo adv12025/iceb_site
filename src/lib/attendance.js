@@ -54,7 +54,7 @@ export function sessionsOn(date, timetable, changes) {
   const base = (timetable[weekdayOf(date)] || [])
     .filter(c => !changeFor(changes, date, c.course))          // cancelled by an announcement / holiday change
     .map(c => ({ id: sid(date, c), date, start: c.start, end: c.end, course: c.course }));
-  const extra = extrasFor(changes, date).map(e => ({ id: sid(date, e), date, start: e.start, end: e.end, course: e.course, extra: true }));
+  const extra = extrasFor(changes, date, true).map(e => ({ id: sid(date, e), date, start: e.start, end: e.end, course: e.course, extra: true }));
   return [...base, ...extra].sort((a, b) => toMin(a.start) - toMin(b.start));
 }
 

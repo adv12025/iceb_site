@@ -17,7 +17,9 @@ export function istNow() {
 const same = (a, b) => a.trim().toLowerCase() === b.trim().toLowerCase();
 export const changeFor = (changes, date, course) =>
   changes.find(c => c.action !== "extra" && c.date === date && (c.course === "*" || same(c.course, course)));
-export const extrasFor = (changes, date) => changes.filter(c => c.action === "extra" && c.date === date && c.start && c.end);
+/* `includeTrackerOnly` lets the attendance tracker see slots that are kept off the public schedule. */
+export const extrasFor = (changes, date, includeTrackerOnly = false) =>
+  changes.filter(c => c.action === "extra" && c.date === date && c.start && c.end && (includeTrackerOnly || !c.trackerOnly));
 
 /* Turn one day's classes into grid cells, merging multi-period classes with colSpan. */
 export function dayCells(list) {
@@ -62,4 +64,4 @@ export function nextLaterClass(timetable, changes, now) {
 
 /* Extra classes from today onward. */
 export const upcomingExtras = (changes, now) =>
-  changes.filter(c => c.action === "extra" && c.date >= now.date && c.start && c.end).sort((a, b) => a.date.localeCompare(b.date) || a.start.localeCompare(b.start));
+  changes.filter(c => c.action === "extra" && c.date >= now.date && c.start && c.end && !c.trackerOnly).sort((a, b) => a.date.localeCompare(b.date) || a.start.localeCompare(b.start));
