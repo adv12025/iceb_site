@@ -410,6 +410,15 @@
       "type": "slides",
       "title": "02 01 Site selection (1)",
       "url": "files/mw1k0epd_02-01_Site_selection__1_.pdf"
+    },
+    {
+      "id": "mw1k0u7h94b",
+      "semester": "Semester 1",
+      "subject": "Basics of Mechanical Engineering",
+      "code": "MEIR11",
+      "type": "slides",
+      "title": "Automobiles",
+      "url": "files/mw1k0u6o_Automobiles.pptx"
     }
   ],
   "links": [],
@@ -443,6 +452,146 @@
       "start": "14:30",
       "end": "16:30",
       "note": "Cycle test"
+    },
+    {
+      "id": "x-20260910-physic",
+      "date": "2026-09-10",
+      "course": "Physics",
+      "action": "extra",
+      "start": "14:30",
+      "end": "15:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20260924-physic",
+      "date": "2026-09-24",
+      "course": "Physics",
+      "action": "extra",
+      "start": "14:30",
+      "end": "15:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261001-physic",
+      "date": "2026-10-01",
+      "course": "Physics",
+      "action": "extra",
+      "start": "14:30",
+      "end": "15:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261105-physic",
+      "date": "2026-11-05",
+      "course": "Physics",
+      "action": "extra",
+      "start": "13:30",
+      "end": "14:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261112-physic",
+      "date": "2026-11-12",
+      "course": "Physics",
+      "action": "extra",
+      "start": "13:30",
+      "end": "14:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261203-physic",
+      "date": "2026-12-03",
+      "course": "Physics",
+      "action": "extra",
+      "start": "13:30",
+      "end": "14:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20260922-linear",
+      "date": "2026-09-22",
+      "course": "Linear Algebra & Calculus",
+      "action": "extra",
+      "start": "15:20",
+      "end": "16:10",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20260929-linear",
+      "date": "2026-09-29",
+      "course": "Linear Algebra & Calculus",
+      "action": "extra",
+      "start": "15:20",
+      "end": "16:10",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261008-linear",
+      "date": "2026-10-08",
+      "course": "Linear Algebra & Calculus",
+      "action": "extra",
+      "start": "15:20",
+      "end": "16:10",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261111-energy",
+      "date": "2026-11-11",
+      "course": "Energy & Environmental Engg.",
+      "action": "extra",
+      "start": "08:30",
+      "end": "09:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261104-basics",
+      "date": "2026-11-04",
+      "course": "Basics of Mechanical Engg.",
+      "action": "extra",
+      "start": "15:00",
+      "end": "15:50",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261111-basics",
+      "date": "2026-11-11",
+      "course": "Basics of Mechanical Engg.",
+      "action": "extra",
+      "start": "15:00",
+      "end": "15:50",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20260918-comput",
+      "date": "2026-09-18",
+      "course": "Computer Programming Lab",
+      "action": "extra",
+      "start": "15:30",
+      "end": "16:20",
+      "note": "LH212",
+      "trackerOnly": true
+    },
+    {
+      "id": "x-20261030-comput",
+      "date": "2026-10-30",
+      "course": "Computer Programming Lab",
+      "action": "extra",
+      "start": "15:30",
+      "end": "16:20",
+      "note": "LH212",
+      "trackerOnly": true
     }
   ],
   "archives": [
